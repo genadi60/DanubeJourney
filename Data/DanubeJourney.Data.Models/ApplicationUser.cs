@@ -28,6 +28,9 @@ namespace DanubeJourney.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
+        public virtual string RoleId { get; set; }
+        public virtual ApplicationRole Role { get; set; }
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }

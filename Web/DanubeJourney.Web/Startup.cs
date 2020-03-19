@@ -1,4 +1,6 @@
-﻿namespace DanubeJourney.Web
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace DanubeJourney.Web
 {
     using System.Reflection;
 
@@ -57,7 +59,7 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
             services.AddTransient<ISettingsService, SettingsService>();
         }
 
