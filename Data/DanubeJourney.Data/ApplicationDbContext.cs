@@ -26,6 +26,28 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Trip> Trips { get; set; }
+
+        public DbSet<Ship> Ships { get; set; }
+
+        public DbSet<Room> Rooms { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<Deck> Decks { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<RoomPlan> RoomPlans { get; set; }
+
+        public DbSet<RoomCategory> RoomCategories { get; set; }
+
+        public DbSet<ImageCategory> ImageCategories { get; set; }
+
+        public DbSet<Facility> Facilities { get; set; }
+
+        public DbSet<Feature> Features { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

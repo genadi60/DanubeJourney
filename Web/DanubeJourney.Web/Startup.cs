@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace DanubeJourney.Web
+﻿namespace DanubeJourney.Web
 {
     using System.Reflection;
 

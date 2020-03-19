@@ -1,9 +1,8 @@
 ﻿namespace DanubeJourney.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using DanubeJourney.Data.Models;
     using DanubeJourney.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {

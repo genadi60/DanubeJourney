@@ -16,6 +16,7 @@ namespace DanubeJourney.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Comments = new HashSet<Comment>();
         }
 
         // Audit info
@@ -28,7 +29,8 @@ namespace DanubeJourney.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
-        public virtual string RoleId { get; set; }
+        public string RoleId { get; set; }
+
         public virtual ApplicationRole Role { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
@@ -36,5 +38,7 @@ namespace DanubeJourney.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
