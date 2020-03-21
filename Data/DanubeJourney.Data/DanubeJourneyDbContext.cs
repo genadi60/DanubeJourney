@@ -48,6 +48,8 @@
 
         public DbSet<Feature> Features { get; set; }
 
+        public DbSet<BookingCard> BookingCards { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

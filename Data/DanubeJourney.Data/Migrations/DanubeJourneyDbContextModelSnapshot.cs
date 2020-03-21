@@ -19,6 +19,48 @@ namespace DanubeJourney.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("DanubeJourney.Data.Common.Models.BookingCard", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TripId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("RoomId");
+
+                    b.HasIndex("TripId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BookingCards");
+                });
+
             modelBuilder.Entity("DanubeJourney.Data.Common.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -477,7 +519,7 @@ namespace DanubeJourney.Data.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("DanubeJourney.Data.Models.ApplicationUser", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.DanubeJourneyUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -697,9 +739,26 @@ namespace DanubeJourney.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("DanubeJourney.Data.Common.Models.BookingCard", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Common.Models.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DanubeJourney.Data.Common.Models.Trip", "Trip")
+                        .WithMany()
+                        .HasForeignKey("TripId");
+
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
             modelBuilder.Entity("DanubeJourney.Data.Common.Models.Comment", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationUser", "Author")
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyUser", "Author")
                         .WithMany("Comments")
                         .HasForeignKey("AuthorId");
 
@@ -766,7 +825,7 @@ namespace DanubeJourney.Data.Migrations
                         .HasForeignKey("ShipId");
                 });
 
-            modelBuilder.Entity("DanubeJourney.Data.Models.ApplicationUser", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.DanubeJourneyUser", b =>
                 {
                     b.HasOne("DanubeJourney.Data.Models.DanubeJourneyRole", "Role")
                         .WithMany()
@@ -784,7 +843,7 @@ namespace DanubeJourney.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationUser", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyUser", null)
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -793,7 +852,7 @@ namespace DanubeJourney.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationUser", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyUser", null)
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -808,7 +867,7 @@ namespace DanubeJourney.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationUser", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyUser", null)
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -817,7 +876,7 @@ namespace DanubeJourney.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationUser", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
