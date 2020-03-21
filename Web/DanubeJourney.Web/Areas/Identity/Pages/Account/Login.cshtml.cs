@@ -16,14 +16,14 @@
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly UserManager<DanubeJourneyUser> _userManager;
+        private readonly SignInManager<DanubeJourneyUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
         public LoginModel(
-            SignInManager<ApplicationUser> signInManager,
+            SignInManager<DanubeJourneyUser> signInManager,
             ILogger<LoginModel> logger,
-            UserManager<ApplicationUser> userManager)
+            UserManager<DanubeJourneyUser> userManager)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;

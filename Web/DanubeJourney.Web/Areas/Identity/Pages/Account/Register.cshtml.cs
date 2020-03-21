@@ -23,19 +23,19 @@
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
-        private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<DanubeJourneyUser> _signInManager;
+        private readonly UserManager<DanubeJourneyUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly Services.Messaging.IEmailSender _emailSender;
-        private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly RoleManager<DanubeJourneyRole> _roleManager;
         private readonly IRepository<IdentityUserRole<string>> _userRoleRepository;
 
         public RegisterModel(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
+            UserManager<DanubeJourneyUser> userManager,
+            SignInManager<DanubeJourneyUser> signInManager,
             ILogger<RegisterModel> logger,
             Services.Messaging.IEmailSender emailSender,
-            RoleManager<ApplicationRole> roleManager,
+            RoleManager<DanubeJourneyRole> roleManager,
             IRepository<IdentityUserRole<string>> userRoleRepository)
         {
             this._userManager = userManager;
@@ -90,7 +90,7 @@
             if (this.ModelState.IsValid)
             {
                 var role = this._roleManager.Roles.FirstOrDefault(r => r.Name == "User");
-                var user = new ApplicationUser { UserName = this.Input.Username, Email = this.Input.Email };
+                var user = new DanubeJourneyUser { UserName = this.Input.Username, Email = this.Input.Email };
                 if (!this._userManager.Users.Any())
                 {
                     role = this._roleManager.Roles?.FirstOrDefault(r => r.Name == "Administrator");

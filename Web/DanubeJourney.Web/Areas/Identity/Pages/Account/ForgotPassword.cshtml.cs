@@ -16,10 +16,10 @@
     [AllowAnonymous]
     public class ForgotPasswordModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<DanubeJourneyUser> _userManager;
         private readonly IEmailSender _emailSender;
 
-        public ForgotPasswordModel(UserManager<ApplicationUser> userManager, IEmailSender emailSender)
+        public ForgotPasswordModel(UserManager<DanubeJourneyUser> userManager, IEmailSender emailSender)
         {
             this._userManager = userManager;
             this._emailSender = emailSender;

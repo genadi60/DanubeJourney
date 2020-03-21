@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DanubeJourney.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(DanubeJourneyDbContext))]
     [Migration("20200319233125_InitialModels")]
     partial class InitialModels
     {
@@ -438,7 +438,7 @@ namespace DanubeJourney.Data.Migrations
                     b.ToTable("Trips");
                 });
 
-            modelBuilder.Entity("DanubeJourney.Data.Models.ApplicationRole", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.DanubeJourneyRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -770,14 +770,14 @@ namespace DanubeJourney.Data.Migrations
 
             modelBuilder.Entity("DanubeJourney.Data.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationRole", "Role")
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyRole", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationRole", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -804,7 +804,7 @@ namespace DanubeJourney.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationRole", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)

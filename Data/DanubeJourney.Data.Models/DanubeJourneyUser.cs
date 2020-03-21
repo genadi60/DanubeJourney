@@ -8,9 +8,9 @@ namespace DanubeJourney.Data.Models
 
     using Microsoft.AspNetCore.Identity;
 
-    public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
+    public class DanubeJourneyUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
-        public ApplicationUser()
+        public DanubeJourneyUser()
         {
             this.Id = Guid.NewGuid().ToString();
             this.Roles = new HashSet<IdentityUserRole<string>>();
@@ -31,7 +31,7 @@ namespace DanubeJourney.Data.Models
 
         public string RoleId { get; set; }
 
-        public virtual ApplicationRole Role { get; set; }
+        public virtual DanubeJourneyRole Role { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 

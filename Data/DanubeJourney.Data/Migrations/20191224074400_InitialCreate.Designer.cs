@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DanubeJourney.Data.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(DanubeJourneyDbContext))]
     [Migration("20191224074400_InitialCreate")]
     partial class InitialCreate
     {
@@ -21,7 +21,7 @@ namespace DanubeJourney.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DanubeJourney.Data.Models.ApplicationRole", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.DanubeJourneyRole", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -279,7 +279,7 @@ namespace DanubeJourney.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationRole", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -306,7 +306,7 @@ namespace DanubeJourney.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Models.ApplicationRole", null)
+                    b.HasOne("DanubeJourney.Data.Models.DanubeJourneyRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Restrict)

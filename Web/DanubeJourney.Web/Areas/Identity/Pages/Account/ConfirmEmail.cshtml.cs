@@ -13,9 +13,9 @@
     [AllowAnonymous]
     public class ConfirmEmailModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<DanubeJourneyUser> _userManager;
 
-        public ConfirmEmailModel(UserManager<ApplicationUser> userManager)
+        public ConfirmEmailModel(UserManager<DanubeJourneyUser> userManager)
         {
             this._userManager = userManager;
         }

@@ -7,14 +7,14 @@ namespace DanubeJourney.Data.Models
 
     using Microsoft.AspNetCore.Identity;
 
-    public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
+    public class DanubeJourneyRole : IdentityRole, IAuditInfo, IDeletableEntity
     {
-        public ApplicationRole()
+        public DanubeJourneyRole()
             : this(null)
         {
         }
 
-        public ApplicationRole(string name)
+        public DanubeJourneyRole(string name)
             : base(name)
         {
             this.Id = Guid.NewGuid().ToString();
