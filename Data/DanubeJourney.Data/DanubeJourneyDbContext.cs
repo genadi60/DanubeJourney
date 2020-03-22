@@ -50,6 +50,8 @@
 
         public DbSet<BookingCard> BookingCards { get; set; }
 
+        public DbSet<Employee> Employees { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

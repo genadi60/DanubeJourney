@@ -12,6 +12,7 @@
             this.Comments = new HashSet<Comment>();
             this.Facilities = new HashSet<Facility>();
             this.DeckPlans = new HashSet<Deck>();
+            this.Staf = new HashSet<Employee>();
         }
 
         public string Name { get; set; }
@@ -28,6 +29,10 @@
 
         public int Suites { get; set; }
 
+        public string CaptainId { get; set; }
+
+        public virtual Employee Captain { get; set; }
+
         public virtual ICollection<Image> Gallery { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
@@ -35,5 +40,7 @@
         public virtual ICollection<Facility> Facilities { get; set; }
 
         public virtual ICollection<Deck> DeckPlans { get; set; }
+
+        public virtual ICollection<Employee> Staf { get; set; }
     }
 }

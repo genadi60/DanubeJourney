@@ -3,30 +3,28 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<DanubeJourneyUser> SignInManager
 @inject UserManager<DanubeJourneyUser> UserManager
-
 @if (this.SignInManager.IsSignedIn(this.User))
 {
     <li>
-        <span class="title"><a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><i class="far fa-hand-paper"></i> Hello @(this.User.Identity.Name)!</a></span>
+        <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><span class="title"><i class="far fa-hand-paper"></i> Hello @(this.User.Identity.Name)!</span></a>
     </li>
     if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
     {
         <li>
-            <span class="title"><a asp-area="Administration" asp-controller="Dashboard" asp-action="Index"><i class="fas fa-user-cog"></i> Admin</a></span>
+            <a asp-area="Administration" asp-controller="Dashboard" asp-action="Index"><span class="title"><i class="fas fa-user-cog"></i> Admin</span></a>
         </li>
     }
     <li>
-        <span class="title">
-        <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </span>
-</li>
+        
+        <a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))"><span class="title"><i class="fas fa-sign-out-alt"></i> Logout</span></a>
+    </li>
 }
 else
 {
     <li>
-        <span class="title"><a asp-area="Identity" asp-page="/Account/Register"><i class="fas fa-user-plus"></i> Register</a></span>
+        <a asp-area="Identity" asp-page="/Account/Register"> <span class="title"><i class="fas fa-user-plus"></i> Register</span></a>
     </li>
     <li>
-        <span class="title"><a asp-area="Identity" asp-page="/Account/Login"><i class="fas fa-sign-in-alt"></i> Login</a></span>
+        <a asp-area="Identity" asp-page="/Account/Login"><span class="title"><i class="fas fa-sign-in-alt"></i> Login</span></a>
     </li>
 }

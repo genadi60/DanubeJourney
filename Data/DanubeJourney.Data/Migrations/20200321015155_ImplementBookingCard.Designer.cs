@@ -4,14 +4,16 @@ using DanubeJourney.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DanubeJourney.Data.Migrations
 {
     [DbContext(typeof(DanubeJourneyDbContext))]
-    partial class DanubeJourneyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200321015155_ImplementBookingCard")]
+    partial class ImplementBookingCard
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,53 +148,6 @@ namespace DanubeJourney.Data.Migrations
                     b.HasIndex("ShipId");
 
                     b.ToTable("Decks");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Employee", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfBird")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Experience")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ShipId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Оccupation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ShipId");
-
-                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("DanubeJourney.Data.Common.Models.Facility", b =>
@@ -444,9 +399,6 @@ namespace DanubeJourney.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CaptainId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -481,8 +433,6 @@ namespace DanubeJourney.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CaptainId");
 
                     b.HasIndex("IsDeleted");
 
@@ -830,13 +780,6 @@ namespace DanubeJourney.Data.Migrations
                         .HasForeignKey("ShipId");
                 });
 
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Employee", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
-                        .WithMany("Staf")
-                        .HasForeignKey("ShipId");
-                });
-
             modelBuilder.Entity("DanubeJourney.Data.Common.Models.Facility", b =>
                 {
                     b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
@@ -875,13 +818,6 @@ namespace DanubeJourney.Data.Migrations
                     b.HasOne("DanubeJourney.Data.Common.Models.RoomPlan", "Plan")
                         .WithMany()
                         .HasForeignKey("PlanId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Ship", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Employee", "Captain")
-                        .WithMany()
-                        .HasForeignKey("CaptainId");
                 });
 
             modelBuilder.Entity("DanubeJourney.Data.Common.Models.Trip", b =>

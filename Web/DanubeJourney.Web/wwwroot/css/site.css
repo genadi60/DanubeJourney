@@ -1,17 +1,18 @@
 @import url("https://use.typekit.net/qhq2hkv.css");
 :root {
-  --sizing-ws-base: 1.5em;
-  --sizing-fs-base: 12px;
-  --sizing-lt-base: 2rem;
-  --sizing-fs-tablet: 14px;
-  --sizing-fs-laptop: 16px;
-  --sizing-fs-desktop: 18px;
-  --sizing-fs-huge: 20px;
-  --color-main-bgrd: #9F9;
-  --color-main-text: #444;
-  --color-main-link: orange;
-  --color-basic-border: #BBB;
-  --sizing-basic-border: 2px; }
+    --sizing-ws-base: 1.5em;
+    --sizing-fs-base: 12px;
+    --sizing-lt-base: 2rem;
+    --sizing-fs-tablet: 14px;
+    --sizing-fs-laptop: 16px;
+    --sizing-fs-desktop: 18px;
+    --sizing-fs-huge: 20px;
+    --color-main-bgrd: #99e2ff;
+    --color-main-text: #444;
+    --color-main-link: orange;
+    --color-basic-border: #BBB;
+    --sizing-basic-border: 2px;
+}
 
 body {
   background: var(--color-main-bgrd, #000);
@@ -40,8 +41,25 @@ html {
   box-sizing: inherit; }
 
 /* Typography*/
-html {
-  font: var(--sizing-fs-base)/1.5 "Georgia", sans-serif; }
+body {
+  font: var(--sizing-fs-base)/1.5 "Georgia", sans-serif !important}
+h1 {
+    font-size: 2.2em;}
+
+h2 {
+    font-size: 2.0em;}
+
+h3 {
+    font-size: 1.5em;}
+
+h4 {
+    font-size: 1.3em;}
+
+h5 {
+    font-size: 1.2em;}
+
+h6 {
+    font-size: 1.1em;}
 
 @media (min-width: 600px) {
   html {
@@ -67,7 +85,7 @@ ul, ol {
 
 h1, h2, h3 {
   margin: 0 0 calc(var(--sizing-ws-base) / 3) 0;
-  font-style: inherit; }
+  font-style: inherit;}
 
 .testimonials {
   padding: 2rem 2rem;
@@ -120,7 +138,9 @@ h1, h2, h3 {
 nav {
   font-family: meera, sans-serif;
   font-weight: 400;
-  font-style: normal; }
+  font-style: normal;
+  font-size: 1.2em;
+}
   nav ul {
     padding: 0;
     margin: 0; }
@@ -133,8 +153,8 @@ nav {
     background: #900; }
   nav a {
     display: block;
-    padding: 0.5em 1em;
-    background: rgba(0, 0, 0, 0.4);
+    padding: 0.3em 1em;
+    background: rgba(0, 0, 0, 0.6);
     text-decoration: none;
     outline: none;
     margin-right: 0.2rem;
@@ -150,15 +170,22 @@ nav {
 * Header Navigation Style
 */
 .header-nav {
-  margin-right: auto;
-  /* Level 2 - only for larger devices */
-  /* Hide-Show entire Nav element for different devices */ }
+    margin-right: auto;
+    z-index: 1000;
+    /* Level 2 - only for larger devices */
+    /* Hide-Show entire Nav element for different devices */
+}
+.brand img {
+    width: 1.5rem;
+    height: auto;
+}
   @media (max-width: 990px) {
     .header-nav ul {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 9000; } }
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 9000;
+    } }
   .header-nav li {
     position: relative; }
   @media (min-width: 991px) {
@@ -201,13 +228,22 @@ nav {
     .header-nav {
       width: 100%;
       height: 100vh;
-      padding: 8rem;
+      padding: 2rem 8rem;
       position: fixed;
       top: 0;
       left: 0;
       background-color: rgba(0, 0, 0, 0.5); }
+        /*.footer-nav {
+        width: 100%;
+        height: 10vh;
+        padding: 2rem 8rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }*/
       .header-nav ul ul li a {
-        padding-left: 3rem; }
+        padding-left: 2rem; }
       #toggle-main-nav + .site-header .brand {
         position: relative;
         z-index: 9000; }
@@ -257,7 +293,7 @@ nav {
 
 /*
 * Footer Navigation Style
-*/
+
 .site-footer .toggle-main-nav-button {
   display: none; }
 
@@ -266,15 +302,16 @@ nav {
 
 .footer-nav a {
   border-radius: 0.3rem; }
-
+*/
 form {
-  max-width: 40rem;
-  margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.2);
-  color: #000;
-  padding: 2rem;
-  border: 1px solid #0A0;
-  border-radius: 0.3rem; }
+    max-width: 40rem;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #000;
+    padding: 2rem;
+    border: 1px solid #0010aa;
+    border-radius: 0.3rem;
+}
 
 label {
   display: block;
@@ -384,45 +421,75 @@ ul.gallery {
       margin-bottom: 0; }
         .site-header .inner .brand img {
             vertical-align: unset; }
+@media (min-width: 991px) {
+    .site-header .inner{
+        background-color: rgba(255, 255, 255, 0.7);
+        position: fixed;
+        width: 100%;
+    }
+}
     @media (max-width: 990px) {
-      .site-header .inner {
-        /* flex-direction: column;*/ }
-        .site-header .inner .cta {
-          flex: 0 0 100%;
-          display: flex;
-          justify-content: center;
-          padding-top: 4em; }
-          .site-header .inner .cta .button {
-            padding: 1rem 2rem;
-            font-size: 1.2rem; }
-        .site-header .inner .brand {
-          margin-right: 0;
-          pointer-events: none;}
+        .site-header .inner {
+            /* flex-direction: column;*/
         }
-  .site-header.banner {
-    position: relative;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; }
-    .site-header.banner .brand a {
-      color: #934eee;
-      text-decoration: none; }
-    .site-header.banner:after {
-      display: block;
-      content: ''; }
-    .site-header.banner.size-large:after {
-      padding-top: calc((9 / 16) * 100%);
-      /* Aspect Ratio 16/9 */ }
-    .site-header.banner.size-small:after {
-      padding-top: calc((9 / 32) * 100%);
-      /* Aspect Ratio 32/9 */ }
 
-.site-footer {
-  border-top: var(--sizing-basic-border) solid var(--color-basic-border);
-  padding: var(--sizing-lt-base);
-  font-size: 0.8em; }
-  .site-footer p {
-    font-style: italic;
-    color: rgba(0, 0, 0, 0.5); }
-  .site-footer .button {
-    display: none; }
+            .site-header .inner .cta {
+                flex: 0 0 100%;
+                display: flex;
+                justify-content: center;
+                padding-top: 2em;
+            }
+
+                .site-header .inner .cta .button {
+                    padding: 0.5rem 1rem;
+                    font-size: 1.2rem;
+                    text-decoration: none;
+                }
+
+            .site-header .inner .brand {
+                margin-right: 0;
+                pointer-events: none;
+            }
+    }
+
+    .site-header.banner {
+        position: relative;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+        .site-header.banner .brand a {
+            color: #0825f1;
+            text-decoration: none;
+        }
+
+        .site-header.banner:after {
+            display: block;
+            content: '';
+        }
+
+        .site-header.banner.size-large:after {
+            padding-top: calc((9 / 24) * 100%);
+            /* Aspect Ratio 16/9 */
+        }
+
+        .site-header.banner.size-small:after {
+            padding-top: calc((9 / 32) * 100%);
+            /* Aspect Ratio 32/9 */
+        }
+
+    .site-footer {
+        border-top: var(--sizing-basic-border) solid var(--color-basic-border);
+        padding: var(--sizing-lt-base);
+        font-size: 1em;
+    }
+
+        .site-footer p {
+            font-style: italic;
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        .site-footer .button {
+            display: none;
+        }
