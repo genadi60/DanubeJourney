@@ -5,6 +5,7 @@
 
     using DanubeJourney.Data.Common.Repositories;
     using DanubeJourney.Data.Models;
+    using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Services.Mapping;
 
     public class SettingsService : ISettingsService

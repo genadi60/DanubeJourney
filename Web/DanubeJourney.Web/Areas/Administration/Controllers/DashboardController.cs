@@ -1,6 +1,6 @@
 ﻿namespace DanubeJourney.Web.Areas.Administration.Controllers
 {
-    using DanubeJourney.Services.Data;
+    using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Web.ViewModels.Administration.Dashboard;
 
     using Microsoft.AspNetCore.Mvc;

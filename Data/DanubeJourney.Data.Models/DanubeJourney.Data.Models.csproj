@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Services\DanubeJourney.Services.Mapping\DanubeJourney.Services.Mapping.csproj" />
     <ProjectReference Include="..\DanubeJourney.Data.Common\DanubeJourney.Data.Common.csproj" />
   </ItemGroup>
   

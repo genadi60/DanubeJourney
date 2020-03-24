@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Data\DanubeJourney.Data.Models\DanubeJourney.Data.Models.csproj" />
+    <ProjectReference Include="..\Services\DanubeJourney.Services.Mapping\DanubeJourney.Services.Mapping.csproj" />
+    <ProjectReference Include="..\Web\DanubeJourney.Web.ViewModels\DanubeJourney.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

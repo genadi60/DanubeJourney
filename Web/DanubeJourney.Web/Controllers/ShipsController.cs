@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DanubeJourney.Web.Controllers
+﻿namespace DanubeJourney.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+
     public class ShipsController : BaseController
     {
+        public IActionResult Create()
+        {
+            return this.View();
+        }
+
+        public IActionResult Details()
+        {
+            return null;
+        }
     }
 }

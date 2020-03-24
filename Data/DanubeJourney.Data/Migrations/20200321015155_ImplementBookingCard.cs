@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace DanubeJourney.Data.Migrations
+﻿namespace DanubeJourney.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class ImplementBookingCard : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +20,7 @@ namespace DanubeJourney.Data.Migrations
                     TripId = table.Column<string>(nullable: true),
                     RoomId = table.Column<int>(nullable: false),
                     Amount = table.Column<decimal>(nullable: false),
-                    UserId = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

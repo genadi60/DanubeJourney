@@ -13,6 +13,7 @@
     using DanubeJourney.Data.Repositories;
     using DanubeJourney.Data.Seeding;
     using DanubeJourney.Services.Data;
+    using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Services.Messaging;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;

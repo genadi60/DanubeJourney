@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace DanubeJourney.Data.Migrations
+﻿namespace DanubeJourney.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class InitialEmploees : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,7 +28,7 @@ namespace DanubeJourney.Data.Migrations
                     Оccupation = table.Column<string>(nullable: true),
                     Experience = table.Column<int>(nullable: false),
                     Salary = table.Column<decimal>(nullable: false),
-                    ShipId = table.Column<string>(nullable: true)
+                    ShipId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

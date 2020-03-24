@@ -9,6 +9,7 @@
     using DanubeJourney.Data.Repositories;
     using DanubeJourney.Data.Seeding;
     using DanubeJourney.Services.Data;
+    using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Services.Mapping;
     using DanubeJourney.Services.Messaging;
     using DanubeJourney.Web.ViewModels;
@@ -59,6 +60,7 @@
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<ITripsService, TripsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

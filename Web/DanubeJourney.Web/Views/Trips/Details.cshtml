@@ -1,0 +1,68 @@
+﻿@model DanubeJourney.Web.ViewModels.Trips.TripViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="card" style="width: 20rem;">
+            <img src="@Model.MapUrl" class="card-img-top" alt="@Model.Name">
+            <div class="card-body">
+                <h5 class="card-title">Name: @Model.Name</h5>
+                <p class="card-text">Description: @Model.Description</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Id: @Model.Id</li>
+                <li class="list-group-item">Duration: @Model.Duration</li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link" asp-controller="Ships" asp-action="Details">Ship: @Model.Ship</a>
+            </div>
+        </div>
+        @*<dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Duration)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Duration)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ShipId)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ShipId)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Ship)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Ship)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.MapUrl)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.MapUrl)
+            </dd>
+        </dl>*@
+    </div>
+    </div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

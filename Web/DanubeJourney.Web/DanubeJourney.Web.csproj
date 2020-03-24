@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DanubeJourney.Web.InputModels\DanubeJourney.Web.InputModels.csproj" />
     <ProjectReference Include="..\..\Data\DanubeJourney.Data.Models\DanubeJourney.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\DanubeJourney.Data\DanubeJourney.Data.csproj" />
     <ProjectReference Include="..\..\Services\DanubeJourney.Services.Data\DanubeJourney.Services.Data.csproj" />

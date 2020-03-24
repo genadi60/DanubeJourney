@@ -1,4 +1,4 @@
-﻿namespace DanubeJourney.Services.Data
+﻿namespace DanubeJourney.Services.Data.Contracts
 {
     using System.Collections.Generic;
 

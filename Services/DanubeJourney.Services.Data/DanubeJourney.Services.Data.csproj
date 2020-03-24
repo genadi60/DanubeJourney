@@ -19,8 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DanubeJourney.Web.InputModels\DanubeJourney.Web.InputModels.csproj" />
     <ProjectReference Include="..\..\Data\DanubeJourney.Data.Common\DanubeJourney.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\DanubeJourney.Data.Models\DanubeJourney.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\DanubeJourney.Web.ViewModels\DanubeJourney.Web.ViewModels.csproj" />
     <ProjectReference Include="..\DanubeJourney.Services.Mapping\DanubeJourney.Services.Mapping.csproj" />
   </ItemGroup>
 

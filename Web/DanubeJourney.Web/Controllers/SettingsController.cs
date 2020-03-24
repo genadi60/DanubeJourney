@@ -5,7 +5,7 @@
 
     using DanubeJourney.Data.Common.Repositories;
     using DanubeJourney.Data.Models;
-    using DanubeJourney.Services.Data;
+    using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Web.ViewModels.Settings;
 
     using Microsoft.AspNetCore.Mvc;

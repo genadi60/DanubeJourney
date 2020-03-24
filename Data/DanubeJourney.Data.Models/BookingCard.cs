@@ -19,7 +19,7 @@
 
         public virtual Room Room { get; set; }
 
-        public Decimal Amount { get; set; }
+        public decimal Amount { get; set; }
 
         public string UserId { get; set; }
 

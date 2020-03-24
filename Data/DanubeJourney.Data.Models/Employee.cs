@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DanubeJourney.Data.Common.Models
+﻿namespace DanubeJourney.Data.Common.Models
 {
+    using System;
+
     public class Employee : BaseDeletableModel<string>
     {
         public Employee()
@@ -15,12 +13,12 @@ namespace DanubeJourney.Data.Common.Models
 
         public string LastName { get; set; }
 
-        public DateTime DateOfBird { get; set; }
+        public DateTime? DateOfBird { get; set; }
 
         public string Оccupation { get; set; }
 
         public int Experience { get; set; }
 
-        public Decimal Salary { get; set; }
+        public decimal Salary { get; set; }
     }
 }
