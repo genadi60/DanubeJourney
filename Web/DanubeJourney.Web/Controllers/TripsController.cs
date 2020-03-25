@@ -1,4 +1,6 @@
-﻿namespace DanubeJourney.Web.Controllers
+﻿using DanubeJourney.Web.ViewModels.Trips;
+
+namespace DanubeJourney.Web.Controllers
 {
     using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Web.InputModels.Trips;
@@ -55,11 +57,30 @@
             return this.RedirectToAction("Details");
         }
 
-        public IActionResult Details()
+
+        public IActionResult Details(string id)
         {
-            var id = this.TempData["id"].ToString();
             var model = this._tripsService.Details(id);
             return this.View(model);
+        }
+
+        //public IActionResult Details()
+        //{
+        //    var id = this.TempData["id"].ToString();
+        //    var model = this._tripsService.Details(id);
+        //    return this.View(model);
+        //}
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult Delete(TripViewModel model)
+        {
+           return this.View(model);
         }
     }
 }

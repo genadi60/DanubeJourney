@@ -23,151 +23,119 @@
     </environment>
 </head>
 <body class="page hyde">
-    <input type="checkbox" id="toggle-main-nav">
-    <header class="site-header banner @(ViewData["size"] == null ? "size-small" : ViewData["size"])" style="background-image: url(https://www.compas.bg/ca/images/remote/offers/7403/4.jpg&auto=format&fit=crop&w=1489&q=80)">
-        <div class="inner">
-            <h1 class="brand">
-                <img src="~/css/Images/favicon-32x32.png" alt="icon" />
-                <a asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-            </h1>
-            <label for="toggle-main-nav" class="toggle-main-nav-button fas"><span>Menu</span></label>
-            <nav class="header-nav">
-                <ul>
-                    <!--<li>
-                        <a asp-area="" asp-controller="Home" asp-action="Index"><span><i class="fas fa-home"></i> Home</span></a>
-                    </li>-->
-                    <li>
-                        <a asp-area="" asp-controller="Trips" asp-action="Index"><i class="far fa-compass"></i> Trips</a>
-                        <ul>
-                            <li>
-                                <a href='/Hyde/contacts/'>VienneseWaltz</a>
-                            </li>
-                            <li>
-                                <a href='/Hyde/gallery.html'>Symphony</a>
-                            </li>
-                            <li>
-                                <a href='/Hyde/gallery.html'>Serenade</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href='/Hyde/gallery.html'>
-                            <span class="title"><i class="fas fa-photo-video"></i> Gallery</span>
-                            <span class="date"></span>
-                        </a>
-                        <ul>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/contacts/'>
-                                    <span class="title"><i class="far fa-compass"></i> Contacts</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/gallery.html'>
-                                    <span class="title"><i class="fas fa-photo-video"></i> Gallery</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/products.html'>
-                                    <span class="title"><i class="fas fa-industry"></i> Products</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/about/'>
-                                    <span class="title"><i class="fas fa-info"></i> About</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href='/Hyde/products.html'>
-                            <span class="title"><i class="fas fa-industry"></i> Products</span>
-                            <span class="date"></span>
-                        </a>
-                        <ul>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/contacts/'>
-                                    <span class="title"><i class="far fa-compass"></i> Contacts</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/gallery.html'>
-                                    <span class="title"><i class="fas fa-photo-video"></i> Gallery</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/products.html'>
-                                    <span class="title"><i class="fas fa-industry"></i> Products</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/about/'>
-                                    <span class="title"><i class="fas fa-info"></i> About</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href='/Hyde/about/'>
-                            <span class="title"><i class="fas fa-info"></i> About</span>
-                            <span class="date"></span>
-                        </a>
-                        <ul>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/contacts/'>
-                                    <span class="title"><i class="far fa-compass"></i> Contacts</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/gallery.html'>
-                                    <span class="title"><i class="fas fa-photo-video"></i> Gallery</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <!--<li >-->
-                                <a href='/Hyde/products.html'>
-                                    <span class="title"><i class="fas fa-industry"></i> Products</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a asp-area="Identity" asp-page="/Account/Register">
-                                    <span class="title"><i class="fas fa-user-plus"></i> Register</span>
-                                    <span class="date"><!--01 Jul 2019--></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <partial name="_LoginPartial" />
-                </ul>
-            </nav>
-            <section class="cta">
-                <a href="mailto:genadimihaylov@gmail.com" class="button">Contact Us</a>
-            </section>
-        </div>
-    </header>
+<input type="checkbox" id="toggle-main-nav">
+<partial name="_CookieConsentPartial" />
+<header class="site-header banner @(ViewData["size"] == null ? "size-small" : ViewData["size"])" style="background-image: url(https://www.compas.bg/ca/images/remote/offers/7403/4.jpg&auto=format&fit=crop&w=1489&q=80)">
+    <div class="inner">
+        <h1 class="brand">
+            <img src="~/css/Images/favicon-32x32.png" alt="icon" />
+            <a asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+        </h1>
+        <label for="toggle-main-nav" class="toggle-main-nav-button fas"><span>Menu</span></label>
+        <nav class="header-nav">
+            <ul>
+                <!--<li>
+                    <a asp-area="" asp-controller="Home" asp-action="Index"><span><i class="fas fa-home"></i> Home</span></a>
+                </li>-->
+                <li>
+                    <a asp-area="" asp-controller="Trips" asp-action="Index"><i class="far fa-compass"></i> Trips</a>
+                    <ul>
+                        <partial name="_TripsPartial"/>
+                    </ul>
+                </li>
+                <li>
+                    <a href='/Hyde/gallery.html'>
+                        <span class="title"><i class="fas fa-ship"></i> Ships</span>
+                        <span class="date"></span>
+                    </a>
+                    <ul>
+                        <partial name="_ShipsPartial"/>
+                    </ul>
+                </li>
+                <li>
+                    <a href='/Hyde/products.html'>
+                        <span class="title"><i class="fas fa-industry"></i> Products</span>
+                        <span class="date"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <!--<li >-->
+                            <a href='/Hyde/contacts/'>
+                                <span class="title"><i class="far fa-compass"></i> Contacts</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                        <li>
+                            <!--<li >-->
+                            <a href='/Hyde/gallery.html'>
+                                <span class="title"><i class="fas fa-photo-video"></i> Gallery</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                        <li>
+                            <!--<li >-->
+                            <a href='/Hyde/products.html'>
+                                <span class="title"><i class="fas fa-industry"></i> Products</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                        <li>
+                            <!--<li >-->
+                            <a href='/Hyde/about/'>
+                                <span class="title"><i class="fas fa-info"></i> About</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href='/Hyde/about/'>
+                        <span class="title"><i class="fas fa-info"></i> About</span>
+                        <span class="date"></span>
+                    </a>
+                    <ul>
+                        <li>
+                            <!--<li >-->
+                            <a href='/Hyde/contacts/'>
+                                <span class="title"><i class="far fa-compass"></i> Contacts</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                        <li>
+                            <!--<li >-->
+                            <a href='/Hyde/gallery.html'>
+                                <span class="title"><i class="fas fa-photo-video"></i> Gallery</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                        <li>
+                            <!--<li >-->
+                            <a href='/Hyde/products.html'>
+                                <span class="title"><i class="fas fa-industry"></i> Products</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="Identity" asp-page="/Account/Register">
+                                <span class="title"><i class="fas fa-user-plus"></i> Register</span>
+                                <span class="date"><!--01 Jul 2019--></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <partial name="_LoginPartial" />
+            </ul>
+        </nav>
+        <section class="cta">
+            <a href="mailto:genadimihaylov@gmail.com" class="button">Contact Us</a>
+        </section>
+    </div>
+</header>
+<div class="container">
     <main role="main" class="site-content">
         @this.RenderBody()
     </main>
+</div>
     <footer class="site-footer">
         <p>&copy; by Genadi</p>
     </footer>

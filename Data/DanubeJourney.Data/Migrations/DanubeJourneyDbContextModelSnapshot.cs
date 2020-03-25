@@ -177,14 +177,14 @@ namespace DanubeJourney.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Profession")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ShipId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Оccupation")
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

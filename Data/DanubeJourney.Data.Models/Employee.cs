@@ -15,7 +15,7 @@
 
         public DateTime? DateOfBird { get; set; }
 
-        public string Оccupation { get; set; }
+        public string Profession { get; set; }
 
         public int Experience { get; set; }
 
