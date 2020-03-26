@@ -1,0 +1,14 @@
+﻿@using DanubeJourney.Data
+@inject DanubeJourneyDbContext DbContext;
+@{
+    ViewData["Title"] = "_TripsPartial";
+    var trips = DbContext.Trips;
+}
+
+@foreach (var trip in trips)
+{
+    <li>
+        <a asp-area="" asp-controller="Trips" asp-action="Details" asp-route-id="@trip.Id">@trip.Name</a>
+    </li>
+}
+

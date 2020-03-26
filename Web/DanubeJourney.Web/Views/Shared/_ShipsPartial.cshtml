@@ -1,0 +1,15 @@
+﻿@using DanubeJourney.Data
+@inject DanubeJourneyDbContext DbContext;
+@{
+    ViewData["Title"] = "_ShipsPartial";
+    var ships = DbContext.Ships;
+}
+
+@foreach (var ship in ships)
+{
+    <li>
+        <a asp-controller="Ships" asp-action="Details" id="@ship.Id">@ship.Name</a>
+    </li>
+}
+}
+
