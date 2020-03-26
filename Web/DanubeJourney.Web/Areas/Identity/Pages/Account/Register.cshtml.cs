@@ -85,9 +85,9 @@
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ?? this.Url.Content("~/");
+            returnUrl = returnUrl ??Url.Content("~/");
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (this.ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var role = this._roleManager.Roles.FirstOrDefault(r => r.Name == "User");
                 var user = new DanubeJourneyUser { UserName = this.Input.Username, Email = this.Input.Email };

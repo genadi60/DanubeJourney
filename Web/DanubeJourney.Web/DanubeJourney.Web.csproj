@@ -44,4 +44,8 @@
     <ProjectReference Include="..\DanubeJourney.Web.Infrastructure\DanubeJourney.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\DanubeJourney.Web.ViewModels\DanubeJourney.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Users\" />
+  </ItemGroup>
 </Project>
