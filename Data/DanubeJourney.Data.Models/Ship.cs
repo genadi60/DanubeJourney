@@ -12,10 +12,12 @@
             this.Comments = new HashSet<Comment>();
             this.Facilities = new HashSet<Facility>();
             this.DeckPlans = new HashSet<Deck>();
-            this.Staf = new HashSet<Employee>();
+            this.Staff = new HashSet<Employee>();
         }
 
         public string Name { get; set; }
+
+        public string Description { get; set; }
 
         public int Launched { get; set; }
 
@@ -33,6 +35,8 @@
 
         public virtual Employee Captain { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public virtual ICollection<Image> Gallery { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
@@ -41,6 +45,6 @@
 
         public virtual ICollection<Deck> DeckPlans { get; set; }
 
-        public virtual ICollection<Employee> Staf { get; set; }
+        public virtual ICollection<Employee> Staff { get; set; }
     }
 }

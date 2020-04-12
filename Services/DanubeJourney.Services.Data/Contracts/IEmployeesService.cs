@@ -7,6 +7,8 @@
 
     public interface IEmployeesService
     {
+        IndexEmployeesViewModel Index();
+
         Task<int> Create(EmployeeInputModel model);
 
         Task<int> Details(string id);

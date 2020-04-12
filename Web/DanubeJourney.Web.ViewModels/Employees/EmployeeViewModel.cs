@@ -2,8 +2,15 @@
 {
     using System;
 
-    public class EmployeeViewModel
+    using DanubeJourney.Data.Common.Models;
+    using DanubeJourney.Services.Mapping;
+
+    public class EmployeeViewModel : IMapFrom<Employee>
     {
+        public string Id { get; set; }
+        
+        public string Avatar { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }

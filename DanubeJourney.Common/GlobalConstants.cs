@@ -11,5 +11,7 @@
         public const string HumanResourcesRoleName = "HumanResources";
 
         public const string AccountantRoleName = "Accountant";
+
+        public const string EmailSenderKey = "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";
     }
 }

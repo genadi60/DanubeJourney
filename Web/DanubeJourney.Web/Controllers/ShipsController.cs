@@ -1,4 +1,8 @@
-﻿namespace DanubeJourney.Web.Controllers
+﻿using System.Net.Http;
+using DanubeJourney.Services.Data.Contracts;
+using Microsoft.EntityFrameworkCore;
+
+namespace DanubeJourney.Web.Controllers
 {
     using DanubeJourney.Web.InputModels.Ships;
     using DanubeJourney.Web.ViewModels.Ships;
@@ -6,6 +10,23 @@
 
     public class ShipsController : BaseController
     {
+        private readonly IShipsService _shipsService;
+
+        public ShipsController(IShipsService shipsService)
+        {
+            this._shipsService = shipsService;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var collection = this._shipsService.GetModel<ShipViewModel>();
+            var model = new ShipsIndexViewModel {
+                Collection = collection,
+            };
+            return this.View(model);
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -15,19 +36,25 @@
         [HttpPost]
         public IActionResult Create(ShipInputModel model)
         {
-            return this.View();
-        }
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
 
-        [HttpGet]
-        public IActionResult Details()
-        {
-            return null;
+            var result = this._shipsService.Create(model);
+            if (result.Result == 1)
+            {
+                return this.View("CreatedSuccessfully");
+            }
+
+            return this.RedirectToAction("Error", "Home");
         }
 
         [HttpPost]
-        public IActionResult Details(ShipViewModel model)
+        public IActionResult Details([FromForm]string id)
         {
-            return null;
+            var model = this._shipsService.Details(id);
+            return this.View(model);
         }
 
         [HttpGet]

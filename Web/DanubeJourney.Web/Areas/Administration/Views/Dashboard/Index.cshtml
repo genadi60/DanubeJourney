@@ -3,65 +3,56 @@
 @{
     this.ViewData["Title"] = "Admin dashboard";
 }
-<div class="col-sm 2">
+    <div class="col-md 4">
 
-    <h1>@this.ViewData["Title"]</h1>
-    Settings: @this.Model.SettingsCount
+        <h1>@this.ViewData["Title"]</h1>
+        Settings: @this.Model.SettingsCount
+        <hr/>
+        <div class="button-wrapper">
 
-    <div class="input-group">
-        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Create" value="Create">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">Entity</button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" asp-controller="Trips" asp-action="Create">Trip</a>
-                <a class="dropdown-item" asp-controller="Ships" asp-action="Create">Ship</a>
-                <a class="dropdown-item" asp-controller="Rooms" asp-action="Create">Room</a>
-                <a class="dropdown-item" asp-controller="Employees" asp-action="Create">Employee</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+        <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Create
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" asp-area="" asp-controller="Trips" asp-action="Create">Trip</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Ships" asp-action="Create">Ship</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Rooms" asp-action="Create">Room</a>
+                <a class="dropdown-item" asp-area="" asp-controller="Employees" asp-action="Create">Employee</a>
             </div>
         </div>
-    </div>
-    <div class="input-group">
-        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Read" value="Read">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entity</button>
-            <div class="dropdown-menu">
+        <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Read
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" asp-controller="Trips" asp-action="Details">Trip</a>
                 <a class="dropdown-item" asp-controller="Ships" asp-action="Details">Ship</a>
                 <a class="dropdown-item" asp-controller="Rooms" asp-action="Details">Room</a>
                 <a class="dropdown-item" asp-controller="Employees" asp-action="Details">Employee</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
             </div>
         </div>
-    </div>
-    <div class="input-group">
-        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Update" value="Update">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entity</button>
-            <div class="dropdown-menu">
+        <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Update
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" asp-controller="Trips" asp-action="Edit">Trip</a>
                 <a class="dropdown-item" asp-controller="Ships" asp-action="Edit">Ship</a>
                 <a class="dropdown-item" asp-controller="Rooms" asp-action="Edit">Room</a>
                 <a class="dropdown-item" asp-controller="Employees" asp-action="Edit">Employee</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+        </div>
+            <div class="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Delete
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" asp-controller="Trips" asp-action="Delete">Trip</a>
+                    <a class="dropdown-item" asp-controller="Ships" asp-action="Delete">Ship</a>
+                    <a class="dropdown-item" asp-controller="Rooms" asp-action="Delete">Room</a>
+                    <a class="dropdown-item" asp-controller="Employees" asp-action="Delete">Employee</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="input-group">
-        <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Delete" value="Delete">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Entity</button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" asp-controller="Trips" asp-action="Delete">Trip</a>
-                <a class="dropdown-item" asp-controller="Ships" asp-action="Delete">Ship</a>
-                <a class="dropdown-item" asp-controller="Rooms" asp-action="Delete">Room</a>
-                <a class="dropdown-item" asp-controller="Employees" asp-action="Delete">Employee</a>
-                <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-        </div>
-    </div>
-</div>

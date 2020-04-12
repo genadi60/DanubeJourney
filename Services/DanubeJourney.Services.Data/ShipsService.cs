@@ -1,4 +1,10 @@
-﻿namespace DanubeJourney.Services.Data
+﻿using System.Collections.Generic;
+using System.Linq;
+using DanubeJourney.Data.Common.Models;
+using DanubeJourney.Data.Common.Repositories;
+using DanubeJourney.Services.Mapping;
+
+namespace DanubeJourney.Services.Data
 {
     using System;
     using System.Threading.Tasks;
@@ -9,14 +15,35 @@
 
     public class ShipsService : IShipsService
     {
-        public Task<int> Create(ShipInputModel model)
+        private readonly IDeletableEntityRepository<Ship> _repository;
+
+        public ShipsService(IDeletableEntityRepository<Ship> repository)
         {
-            throw new NotImplementedException();
+            this._repository = repository;
         }
 
-        public Task<int> Details(string id)
+        public async Task<int> Create(ShipInputModel model)
         {
-            throw new NotImplementedException();
+            var ship = new Ship
+            {
+                Name = model.Name,
+                Launched = model.Launched,
+                Passengers = model.Passengers,
+                Length = model.Length,
+                Staterooms = model.Staterooms,
+                Suites = model.Suites,
+                Crew = model.Crew,
+                CaptainId = model.CaptainId,
+                ImageUrl = model.ImageUrl,
+            };
+
+            await this._repository.AddAsync(ship);
+            return await this._repository.SaveChangesAsync();
+        }
+
+        public ShipViewModel Details(string id)
+        {
+            return this._repository.All().To<ShipViewModel>().FirstOrDefault(vm => vm.Id.Equals(id));
         }
 
         public Task<int> Edit(ShipViewModel model)
@@ -27,6 +54,11 @@
         public Task<int> Delete(string id)
         {
             throw new NotImplementedException();
+        }
+
+        public ICollection<T> GetModel<T>()
+        {
+            return this._repository.All().To<T>().ToList();
         }
     }
 }

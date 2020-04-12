@@ -1,4 +1,6 @@
-﻿namespace DanubeJourney.Web
+﻿using DanubeJourney.Common;
+
+namespace DanubeJourney.Web
 {
     using System.Reflection;
 
@@ -58,9 +60,11 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
+            services.AddTransient<IEmailSender>(x => new SendGridEmailSender(GlobalConstants.EmailSenderKey));
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ITripsService, TripsService>();
+            services.AddTransient<IShipsService, ShipsService>();
+            services.AddTransient<IEmployeesService, EmployeesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,14 +1,14 @@
-﻿@using DanubeJourney.Data
-@inject DanubeJourneyDbContext DbContext;
+﻿@inject ITripsService Service
+@using DanubeJourney.Services.Data.Contracts
+@using DanubeJourney.Web.Views.Shared
 @{
     ViewData["Title"] = "_TripsPartial";
-    var trips = DbContext.Trips;
+    var model = new TripsPartialModel(Service);
 }
 
-@foreach (var trip in trips)
+@foreach (var trip in model.Trips.Collection)
 {
     <li>
         <a asp-area="" asp-controller="Trips" asp-action="Details" asp-route-id="@trip.Id">@trip.Name</a>
     </li>
 }
-

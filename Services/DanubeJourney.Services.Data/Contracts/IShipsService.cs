@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DanubeJourney.Web.InputModels.Ships;
 using DanubeJourney.Web.ViewModels.Ships;
 
@@ -8,7 +9,9 @@ namespace DanubeJourney.Services.Data.Contracts
     {
         Task<int> Create(ShipInputModel model);
 
-        Task<int> Details(string id);
+        ShipViewModel Details(string id);
+
+        ICollection<T> GetModel<T>();
 
         Task<int> Edit(ShipViewModel model);
 

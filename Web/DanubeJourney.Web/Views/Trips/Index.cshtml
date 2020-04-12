@@ -1,7 +1,38 @@
-﻿
+﻿@model DanubeJourney.Web.ViewModels.Trips.IndexTripsViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Trips";
+    var trips = Model.Collection;
 }
 
-<h1>Index</h1>
+<div class="container-fluid">
+    <div class="col-md-4 justify-content-center">
+        <h1>@ViewData["Title"]</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Duration</th>
+                    <th>Ship</th>
+                    <th>Map</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var trip in trips)
+                {
+                <tr>
+                    <td>@trip.Name</td>
+                    <td>@trip.Description</td>
+                    <td>@trip.Ship.Name</td>
+                    <td>@trip.MapUrl</td>
+                    <td><a class="btn btn-secondary" asp-area="" asp-controller="Trips" asp-action="Details">Details</a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+   
+</div>
+
 

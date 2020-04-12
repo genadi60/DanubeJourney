@@ -153,6 +153,9 @@ namespace DanubeJourney.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Avatar")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -455,6 +458,12 @@ namespace DanubeJourney.Data.Migrations
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -833,7 +842,7 @@ namespace DanubeJourney.Data.Migrations
             modelBuilder.Entity("DanubeJourney.Data.Common.Models.Employee", b =>
                 {
                     b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
-                        .WithMany("Staf")
+                        .WithMany("Staff")
                         .HasForeignKey("ShipId");
                 });
 

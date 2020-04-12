@@ -1,23 +1,31 @@
-﻿using System.Linq;
-using DanubeJourney.Services.Mapping;
-using DanubeJourney.Web.ViewModels.Trips;
-
-namespace DanubeJourney.Services.Data
+﻿namespace DanubeJourney.Services.Data
 {
+    using System.Linq;
     using System.Threading.Tasks;
 
     using DanubeJourney.Data.Common.Models;
     using DanubeJourney.Data.Common.Repositories;
     using DanubeJourney.Services.Data.Contracts;
+    using DanubeJourney.Services.Mapping;
     using DanubeJourney.Web.InputModels.Trips;
+    using DanubeJourney.Web.ViewModels.Trips;
 
     public class TripsService : ITripsService
     {
-        private readonly IRepository<Trip> _tripRepository;
+        private readonly IDeletableEntityRepository<Trip> _tripRepository;
 
-        public TripsService(IRepository<Trip> tripRepository)
+        public TripsService(IDeletableEntityRepository<Trip> tripRepository)
         {
             this._tripRepository = tripRepository;
+        }
+
+        public IndexTripsViewModel Index()
+        {
+            var model = new IndexTripsViewModel
+            {
+                Collection = this._tripRepository.All().To<TripViewModel>().ToList(),
+            };
+            return model;
         }
 
         public string Create(TripInputModel model)
@@ -47,15 +55,7 @@ namespace DanubeJourney.Services.Data
 
         public TripViewModel Details(string id)
         {
-            var tripViewModels =  this._tripRepository.All().Select(tr => new TripViewModel()
-            {
-                Id = tr.Id,
-                Name = tr.Name,
-                Description = tr.Description,
-                Duration = tr.Duration,
-                MapUrl = tr.MapUrl,
-            });
-            return tripViewModels.SingleOrDefault(vm => vm.Id.Equals(id));
+            return this._tripRepository.All().To<TripViewModel>().SingleOrDefault(vm => vm.Id.Equals(id));
         }
     }
 }

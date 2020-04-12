@@ -7,6 +7,8 @@
 
     public interface ITripsService
     {
+        IndexTripsViewModel Index();
+
         string Create(TripInputModel model);
 
         Task<int> Edit(TripInputModel model);

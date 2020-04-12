@@ -16,7 +16,7 @@
 
         public string ShipId { get; set; }
 
-        public string Ship { get; set; }
+        public Ship Ship { get; set; }
 
         public string MapUrl { get; set; }
     }

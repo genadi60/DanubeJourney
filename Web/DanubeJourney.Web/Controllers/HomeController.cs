@@ -1,4 +1,6 @@
-﻿namespace DanubeJourney.Web.Controllers
+﻿using DanubeJourney.Services.Data.Contracts;
+
+namespace DanubeJourney.Web.Controllers
 {
     using System.Diagnostics;
 
@@ -8,6 +10,13 @@
 
     public class HomeController : BaseController
     {
+        private readonly ITripsService _tripsService;
+
+        public HomeController(ITripsService tripsService)
+        {
+            
+        }
+
         public IActionResult Index()
         {
             return this.View();

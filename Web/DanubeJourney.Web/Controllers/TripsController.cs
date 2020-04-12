@@ -1,9 +1,8 @@
-﻿using DanubeJourney.Web.ViewModels.Trips;
-
-namespace DanubeJourney.Web.Controllers
+﻿namespace DanubeJourney.Web.Controllers
 {
     using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Web.InputModels.Trips;
+    using DanubeJourney.Web.ViewModels.Trips;
     using Microsoft.AspNetCore.Mvc;
 
     public class TripsController : BaseController
@@ -17,7 +16,8 @@ namespace DanubeJourney.Web.Controllers
 
         public IActionResult Index()
         {
-            return this.View();
+            var model = this._tripsService.Index();
+            return this.View(model);
         }
 
         [HttpGet]

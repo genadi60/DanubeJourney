@@ -6,6 +6,12 @@
 
     public class EmployeesController : BaseController
     {
+        public IActionResult Index()
+        {
+
+            return this.View();
+        }
+
         [HttpGet]
         public IActionResult Create()
         {

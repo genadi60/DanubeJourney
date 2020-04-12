@@ -1,7 +1,9 @@
-﻿@model DanubeJourney.Web.InputModels.Ships.ShipInputModel
-
+﻿@using DanubeJourney.Services.Data.Contracts
+@model DanubeJourney.Web.InputModels.Ships.ShipInputModel
+@inject IEmployeesService Service
 @{
     this.ViewData["Title"] = "Create";
+    var captains = Service.Index().Collection.Where(e => e.Profession != null && e.Profession.Equals("Captain"));
 }
 
 <h1>Create</h1>
@@ -10,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-controller="Ships" asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
@@ -49,8 +51,19 @@
             </div>
             <div class="form-group">
                 <label asp-for="CaptainId" class="control-label"></label>
-                <input asp-for="CaptainId" class="form-control" />
+                <select asp-for="CaptainId" class="form-control">
+                    <option selected>Choose...</option>
+                    @foreach (var captain in captains)
+                    {
+                        <option value="@captain.Id">@captain.FirstName @captain.LastName</option>
+                    }
+                </select>
                 <span asp-validation-for="CaptainId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

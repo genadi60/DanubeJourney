@@ -1,66 +1,89 @@
-﻿@model DanubeJourney.Web.ViewModels.Ships.ShipViewModel
-
+﻿@using DanubeJourney.Data.Models
+@using Microsoft.AspNetCore.Identity
+@model DanubeJourney.Web.ViewModels.Ships.ShipViewModel
+@inject SignInManager<DanubeJourneyUser> Manager
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>ShipViewModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Launched)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Launched)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Passengers)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Passengers)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Crew)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Crew)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Length)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Length)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Staterooms)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Staterooms)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Suites)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Suites)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CaptainId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CaptainId)
-        </dd>
-    </dl>
+
+<div class="ship-details-container">
+    <section class="image">
+        <img src="@Model.ImageUrl" alt="@Model.Name" />
+    </section>
+    <section class="ship-title">
+        <hr />
+        <h1 style="text-align: center">@Model.Name</h1>
+        <hr />
+    </section>
+
+    <div class="data-container">
+        <section class="main-data">
+            <dl>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Launched)
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.Launched)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Passengers)
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.Passengers)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Crew)
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.Crew)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Length)
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.Length)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Staterooms)
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.Staterooms)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Suites)
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.Suites)
+                </dd>
+            </dl>
+        </section>
+        <aside class="append-data">
+            <ul class="testimonials">
+                <li>
+                    <a href="#">
+                        <span class="avatar">
+                            <img src="@Model.Captain.Avatar" alt="avatar">
+                        </span>
+                        <span class="name">@Model.Captain.FirstName @Model.Captain.LastName</span>
+                        <span class="jobtitle">Captain</span>
+                        <span class="message">
+                            This is only demo!
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+    </div>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @if (this.Manager.Context.User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id });
+        <span>|</span>
+    }
+
+
     <a asp-action="Index">Back to List</a>
 </div>

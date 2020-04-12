@@ -8,8 +8,6 @@
 @foreach (var ship in ships)
 {
     <li>
-        <a asp-controller="Ships" asp-action="Details" id="@ship.Id">@ship.Name</a>
+        <a asp-controller="Ships" asp-action="Details" asp-route-id="@ship.Id">@ship.Name</a>
     </li>
 }
-}
-
