@@ -1,0 +1,300 @@
+﻿@using DanubeJourney.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+
+    <environment names="Development">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+    <environment names="Staging,Production">
+        <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
+    </environment>
+   
+        
+        <link rel="dns-prefetch" href="https://cdn.optimizely.com" crossorigin="">
+        <link rel="dns-prefetch" href="https://www.youtube.com" crossorigin="">
+        <link rel="preconnect" href="https://cdn.visa.com" crossorigin="">
+        <link rel="stylesheet" href="/etc/designs/rvcom/global.min.css" type="text/css">
+        <link rel="stylesheet" href="/etc/clientlibs/rvcom/rvcom-top-components.min.css" type="text/css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.visa.com/v2/assets/css/icons.css">
+        <link rel="preload" href="/etc/designs/rvcom/fonts/OpenSans/OpenSans-Light.ttf" as="font" type="font/ttf" crossorigin="">
+        <link rel="preload" href="/etc/designs/rvcom/fonts/OpenSans/OpenSans-Regular.ttf" as="font" type="font/ttf" crossorigin="">
+        <link rel="preload" href="/etc/designs/rvcom/fonts/OpenSans/OpenSans-SemiBold.ttf" as="font" type="font/ttf" crossorigin="">
+        <link rel="preload" href="/etc/designs/rvcom/fonts/fontawesome-webfont.woff2?v=4.3.0" as="font" type="font/woff2" crossorigin="">
+        <link rel="preload" href="https://cdn.visa.com/cdn/assets/fonts/icons/visaFont.woff" as="font" type="font/woff" crossorigin="">
+        <script src="https://tags.tiqcdn.com/utag/visa/visa-com-europe/prod/utag.js" type="text/javascript" async=""></script>
+        <script src="https://cdn.optimizely.com/js/15056420509.js"></script>
+        <script src="//cdn3.optimizely.com/js/geo2.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.visa.com/cdn/scripts/navigation/bundle.css">
+   
+</head>
+<body>
+<header id="vs-navigation-header" data-auth="false" data-locale="en_gb" data-area="header" role="banner">
+<nav id="vs-navigation-nav" class="vs-header-desktop" aria-label="Site" role="navigation">
+<div class="vs-container-fluid vs-header-container">
+    <div class="vs-header-logo-wrapper  vs-global">
+
+        <a aria-label="Visa home" href="/">
+            <img src="https://cdn.visa.com/cdn/assets/images/logos/visa/logo.png" alt="Visa logo">
+        </a>
+    </div>
+    <ul class="vs-header-menu-wrapper">
+        <li>
+            <a aria-label="Pay With Visa" class="menu-item-control" data-tracking="pay_with_visa_link" href="#" role="menuitem">
+                Pay With Visa
+            </a><ul class="vs-header-sub-menu-wrapper vs-header-collapsed" style="height: 0px;">
+                <li>
+                    <a aria-label="Visa Checkout" class="sub-menu-item-link" data-tracking="visa_checkout_link" href="/pay-with-visa/visa-checkout.html">
+                        <span class="visa-icon visa-icon-visa-checkout sub-menu-icon"></span>
+                        <p>Visa Checkout</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Mobile Payments" class="sub-menu-item-control" data-tracking="mobile_payments_link" href="#">
+                        <span class="visa-icon visa-icon-payment-technology sub-menu-icon"></span>
+                        <p>Mobile Payments</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;">
+                        <div class="vs-header-sub-sub-menu-content">
+                            <ul data-focus="true"><li><a aria-label="<b>Mobile Payments</b>" class="sub-sub-menu-item-link" data-tracking="bmobile_paymentsb_link" href="/pay-with-visa/featured-technologies/mobile-payments.html"><b>Mobile Payments</b></a></li><li><hr class="vs-header-line-break"></li><li><a aria-label="Apple Pay" class="sub-sub-menu-item-link" data-tracking="apple_pay_link" href="/pay-with-visa/featured-technologies/apple-pay.html">Apple Pay</a></li><li><a aria-label="Google Pay" class="sub-sub-menu-item-link" data-tracking="google_pay_link" href="/pay-with-visa/featured-technologies/google-pay-consumer.html">Google Pay</a></li><li><a aria-label="Samsung Pay" class="sub-sub-menu-item-link" data-tracking="samsung_pay_link" href="/pay-with-visa/featured-technologies/samsung-pay-consumer.html">Samsung Pay</a></li></ul><ul></ul><ul></ul><ul>
+                                <li>
+                                    <a class="sub-sub-menu-item-link media-content" aria-label="Visa Authentication Solutions New security regulations may impact how you pay" data-tracking="visa_authentication_solutions_link" href="/pay-with-visa/changes-in-payment-security.html">
+                                        <img class="lazy" src="" data-src="/content/dam/VCOM/regional/ve/unitedkingdom/in-page-images/visa-authentication-solutions/girl-in-hammock-170x170.jpg">
+                                        <p><b>Visa Authentication Solutions</b></p>
+                                        <span class="sub-sub-menu-item-link-text">New security regulations may impact how you pay</span>
+                                        <span aria-hidden="true" class="visa-icon visa-icon-carat-right"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a aria-label="Visa contactless" class="sub-menu-item-link" data-tracking="visa_contactless_link" href="/pay-with-visa/featured-technologies/visa-contactless.html">
+                        <span class="visa-icon visa-icon-visa-paywave sub-menu-icon"></span>
+                        <p>Visa contactless</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Payment Technology" class="sub-menu-item-control" data-tracking="payment_technology_link" href="#">
+                        <span class="visa-icon visa-icon-innovation sub-menu-icon"></span>
+                        <p>Payment Technology</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;"><div class="vs-header-sub-sub-menu-content"><ul data-focus="true"><li><a aria-label="Visa Sensory Branding" class="sub-sub-menu-item-link" data-tracking="visa_sensory_branding_link" href="/pay-with-visa/featured-technologies/visa-sensory-branding.html">Visa Sensory Branding</a></li></ul><ul></ul><ul></ul><ul></ul></div></div>
+                </li>
+                <li>
+                    <a aria-label="Security" class="sub-menu-item-link" data-tracking="security_link" href="/pay-with-visa/changes-in-payment-security.html">
+                        <span class="visa-icon visa-icon-security sub-menu-icon"></span>
+                        <p>Security</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Pay at Pump" class="sub-menu-item-link" data-tracking="pay_at_pump_link" href="/pay-with-visa/pay-at-pump.html">
+                        <span class="visa-icon visa-icon-cards-main sub-menu-icon"></span>
+                        <p>Pay at Pump</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a aria-label="Partner With Us" class="menu-item-control" data-tracking="partner_with_us_link" href="#" role="menuitem">
+                Partner With Us
+            </a><ul class="vs-header-sub-menu-wrapper vs-header-collapsed" style="height: 0px;">
+                <li>
+                    <a aria-label="Payment Technology (Opens new window)" class="sub-menu-item-control" data-tracking="payment_technology_link" href="#" target="_blank" rel="noopener noreferrer">
+                        <span class="visa-icon visa-icon-payment-technology sub-menu-icon"></span>
+                        <p>Payment Technology</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;"><div class="vs-header-sub-sub-menu-content"><ul data-focus="true"><li><a aria-label="Google Pay" class="sub-sub-menu-item-link" data-tracking="google_pay_link" href="/partner-with-us/payment-technology/google-pay-issuers.html">Google Pay</a></li><li><a aria-label="Apple Pay" class="sub-sub-menu-item-link" data-tracking="apple_pay_link" href="/partner-with-us/payment-technology/apple-pay.html">Apple Pay</a></li><li><a aria-label="Samsung Pay" class="sub-sub-menu-item-link" data-tracking="samsung_pay_link" href="/partner-with-us/payment-technology/samsung-pay-issuers.html">Samsung Pay</a></li></ul><ul><li><a aria-label="Visa Digital Solutions" class="sub-sub-menu-item-link" data-tracking="visa_digital_solutions_link" href="/partner-with-us/payment-technology/visa-digital-solutions.html">Visa Digital Solutions</a></li><li><a aria-label="Visa Token Service (Opens new window)" class="sub-sub-menu-item-link" data-tracking="visa_token_service_external_link" href="/partner-with-us/payment-technology/visa-token-service.html" target="_blank" rel="noopener noreferrer">Visa Token Service</a><span aria-hidden="true" class="visa-icon visa-icon-outside-link"></span></li><li><a aria-label="Visa Direct" class="sub-sub-menu-item-link" data-tracking="visa_direct_link" href="/partner-with-us/payment-technology/visa-direct.html">Visa Direct</a></li><li><a aria-label="Strong Customer Authentication" class="sub-sub-menu-item-link" data-tracking="strong_customer_authentication_link" href="/partner-with-us/payment-technology/strong-customer-authentication.html">Strong Customer Authentication</a></li><li><a aria-label="FinTech" class="sub-sub-menu-item-link" data-tracking="fintech_link" href="/partner-with-us/info-for-partners/info-for-fintechs.html">FinTech</a></li><li><a aria-label="Visa Global Transit Solution" class="sub-sub-menu-item-link" data-tracking="visa_global_transit_solution_link" href="/about-visa/visa-in-europe/transforming-transit.html">Visa Global Transit Solution</a></li></ul><ul></ul><ul></ul></div></div>
+                </li>
+                <li>
+                    <a aria-label="Visa Developer" class="sub-menu-item-link" data-tracking="visa_developer_link" href="/partner-with-us/developer.html">
+                        <span class="visa-icon visa-icon-developer-nav sub-menu-icon"></span>
+                        <p>Visa Developer</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Info for Partners" class="sub-menu-item-control" data-tracking="info_for_partners_link" href="#">
+                        <span class="visa-icon visa-icon-info-for-partners sub-menu-icon"></span>
+                        <p>Info for Partners</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;"><div class="vs-header-sub-sub-menu-content"><ul></ul><ul></ul><ul></ul><ul></ul></div></div>
+                </li>
+                <li>
+                    <a aria-label="Visa Consulting and Analytics" class="sub-menu-item-link" data-tracking="visa_consulting_and_analytics_link" href="/partner-with-us/visa-consulting-analytics.html">
+                        <span class="visa-icon visa-icon-visa-performance-solutions sub-menu-icon"></span>
+                        <p>Visa Consulting and Analytics</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Visa Analytics Platform" class="sub-menu-item-link" data-tracking="visa_analytics_platform_link" href="/partner-with-us/visa-analytics-platform.html">
+                        <span class="visa-icon visa-icon-analytics-platform sub-menu-icon"></span>
+                        <p>Visa Analytics Platform</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Visa Data Science Lab" class="sub-menu-item-link" data-tracking="visa_data_science_lab_link" href="/partner-with-us/visa-consulting-analytics/data-science-lab-europe.html">
+                        <span class="visa-icon visa-icon-innovation sub-menu-icon"></span>
+                        <p>Visa Data Science Lab</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a aria-label="Run Your Business" class="menu-item-control" data-tracking="run_your_business_link" href="#" role="menuitem">
+                Run Your Business
+            </a><ul class="vs-header-sub-menu-wrapper vs-header-collapsed" style="height: 0px;">
+                <li>
+                    <a aria-label="Acceptance" class="sub-menu-item-control" data-tracking="acceptance_link" href="#">
+                        <span class="visa-icon visa-icon-start-accepting-visa sub-menu-icon"></span>
+                        <p>Acceptance</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;"><div class="vs-header-sub-sub-menu-content"><ul data-focus="true"><li><a aria-label="Accept Visa Payments" class="sub-sub-menu-item-link" data-tracking="accept_visa_payments_link" href="/run-your-business/acceptance.html">Accept Visa Payments</a></li><li><hr class="vs-header-line-break"></li><li><a aria-label="mPOS&nbsp;" class="sub-sub-menu-item-link" data-tracking="mpos&nbsp;_link" href="/run-your-business/small-business-tools/payment-technology/mobile-card-acceptance.html">mPOS&nbsp;</a></li><li><a aria-label="Visa contactless" class="sub-sub-menu-item-link" data-tracking="visa_contactless_link" href="/run-your-business/small-business-tools/payment-technology/visa-contactless.html">Visa contactless</a></li><li><a aria-label="Google Pay" class="sub-sub-menu-item-link" data-tracking="google_pay_link" href="/run-your-business/small-business-tools/payment-technology/google-pay-merchants.html">Google Pay</a></li><li><a aria-label="Visa Checkout" class="sub-sub-menu-item-link" data-tracking="visa_checkout_link" href="/run-your-business/small-business-tools/payment-technology/visa-checkout.html">Visa Checkout</a></li><li><a aria-label="Verified by Visa" class="sub-sub-menu-item-link" data-tracking="verified_by_visa_link" href="/run-your-business/small-business-tools/payment-technology/verified-by-visa.html">Verified by Visa</a></li><li><a aria-label="Samsung Pay" class="sub-sub-menu-item-link" data-tracking="samsung_pay_link" href="/run-your-business/small-business-tools/payment-technology/samsung-pay-merchant.html">Samsung Pay</a></li><li><a aria-label="Apple Pay" class="sub-sub-menu-item-link" data-tracking="apple_pay_link" href="/run-your-business/small-business-tools/payment-technology/apple-pay.html">Apple Pay</a></li><li><a aria-label="Visa Merchant Business News Digest" class="sub-sub-menu-item-link" data-tracking="visa_merchant_business_news_digest_link" href="/support/merchant/library/visa-merchant-business-news-digest.html">Visa Merchant Business News Digest</a></li></ul><ul></ul><ul></ul><ul></ul></div></div>
+                </li>
+                <li>
+                    <a aria-label="Small Business" class="sub-menu-item-control" data-tracking="small_business_link" href="#">
+                        <span class="visa-icon visa-icon-small-business-management sub-menu-icon"></span>
+                        <p>Small Business</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;">
+                        <div class="vs-header-sub-sub-menu-content">
+                            <ul data-focus="true"><li><a aria-label="Great British High Street Awards" class="sub-sub-menu-item-link" data-tracking="great_british_high_street_awards_link" href="/greatbritishhighstreet.html">Great British High Street Awards</a></li><li><a aria-label="Visa Merchant Supplies (Opens new window)" class="sub-sub-menu-item-link" data-tracking="visa_merchant_supplies_external_link" href="https://merchantsignageeu.visa.com/default.asp?cl_id=188" target="_blank" rel="noopener noreferrer">Visa Merchant Supplies</a><span aria-hidden="true" class="visa-icon visa-icon-outside-link"></span></li></ul><ul><li><a aria-label="Digital Business Kit" class="sub-sub-menu-item-link" data-tracking="digital_business_kit_link" href="/run-your-business/small-business-tools/small-business-toolkit.html">Digital Business Kit</a></li></ul><ul></ul><ul>
+                                <li>
+                                    <a class="sub-sub-menu-item-link media-content" aria-label="Digital Assessment Evaluate the impact of digital commerce" data-tracking="digital_assessment_link" href="/run-your-business/small-business-tools/small-business-assessment-tool.html">
+                                        <img class="lazy" src="" data-src="/content/dam/VCOM/global/run-your-business/images/small-business-calculator-640x640.jpg">
+                                        <p><b>Digital Assessment</b></p>
+                                        <span class="sub-sub-menu-item-link-text">Evaluate the impact of digital commerce</span>
+                                        <span aria-hidden="true" class="visa-icon visa-icon-carat-right"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a aria-label="Commercial Solutions (Opens new window)" class="sub-menu-item-control" data-tracking="commercial_solutions_link" href="#" target="_blank" rel="noopener noreferrer">
+                        <span class="visa-icon visa-icon-commercial-solutions sub-menu-icon"></span>
+                        <p>Commercial Solutions</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;"><div class="vs-header-sub-sub-menu-content"><ul data-focus="true"><li><a aria-label="Payables Automation" class="sub-sub-menu-item-link" data-tracking="payables_automation_link" href="/run-your-business/commercial-solutions/solutions/payables-automation.html">Payables Automation</a></li></ul><ul><li><a aria-label="Visa Digital Solutions" class="sub-sub-menu-item-link" data-tracking="visa_digital_solutions_link" href="/partner-with-us/payment-technology/visa-digital-solutions.html">Visa Digital Solutions</a></li></ul><ul></ul><ul></ul></div></div>
+                </li>
+                <li>
+                    <a aria-label="Visa Direct" class="sub-menu-item-link" data-tracking="visa_direct_link" href="/run-your-business/visa-direct.html">
+                        <span class="visa-icon visa-icon-visa-direct sub-menu-icon"></span>
+                        <p>Visa Direct</p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a aria-label="Visa Everywhere" class="menu-item-control vs-header-active" data-tracking="visa_everywhere_link" href="#" role="menuitem">
+                Visa Everywhere
+            </a><ul class="vs-header-sub-menu-wrapper" style="height: auto; overflow: visible;">
+                <li>
+                    <a aria-label="Visa Blog" class="sub-menu-item-link" data-tracking="visa_blog_link" href="/visa-everywhere/blog.html">
+                        <span class="visa-icon visa-icon-newspaper sub-menu-icon"></span>
+                        <p>Visa Blog</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="Visa Innovations" class="sub-menu-item-link" data-tracking="visa_innovations_link" href="/visa-everywhere/innovation-centers.html">
+                        <span class="visa-icon visa-icon-innovation sub-menu-icon"></span>
+                        <p>Visa Innovations</p>
+                    </a>
+                </li>
+                <li>
+                    <a aria-label="About Visa (Opens new window)" class="sub-menu-item-control" data-tracking="about_visa_link" href="#" target="_blank" rel="noopener noreferrer">
+                        <span class="visa-icon visa-icon-about-visa sub-menu-icon"></span>
+                        <p>About Visa</p>
+                    </a><div class="vs-header-sub-sub-menu-wrapper vs-header-collapsed" style="height: 0px;">
+                        <div class="vs-header-sub-sub-menu-content">
+                            <ul data-focus="true"><li><a aria-label="Careers" class="sub-sub-menu-item-link" data-tracking="careers_link" href="/careers.html">Careers</a></li><li><a aria-label="Our Business" class="sub-sub-menu-item-link" data-tracking="our_business_link" href="/about-visa/our_business.html">Our Business</a></li><li><a aria-label="VisaNet" class="sub-sub-menu-item-link" data-tracking="visanet_link" href="/about-visa/visanet.html">VisaNet</a></li><li><a aria-label="Visa in Europe" class="sub-sub-menu-item-link" data-tracking="visa_in_europe_link" href="/about-visa/visa-in-europe.html">Visa in Europe</a></li><li><a aria-label="Operating Responsibly" class="sub-sub-menu-item-link" data-tracking="operating_responsibly_link" href="/about-visa/operating-responsibly.html">Operating Responsibly</a></li><li><a aria-label="Diversity + Inclusion" class="sub-sub-menu-item-link" data-tracking="diversity__inclusion_link" href="/about-visa/diversity-inclusion.html">Diversity + Inclusion</a></li></ul><ul><li><a aria-label="Financial Inclusion " class="sub-sub-menu-item-link" data-tracking="financial_inclusion__link" href="/about-visa/financial-inclusion.html">Financial Inclusion </a></li><li><a aria-label="Citizenship" class="sub-sub-menu-item-link" data-tracking="citizenship_link" href="/about-visa/philanthropy.html">Citizenship</a></li><li><a aria-label="Investor Relations (Opens new window)" class="sub-sub-menu-item-link" data-tracking="investor_relations_external_link" href="http://investor.visa.com/" target="_blank" rel="noopener noreferrer">Investor Relations</a><span aria-hidden="true" class="visa-icon visa-icon-outside-link"></span></li><li><a aria-label="Interchange fees" class="sub-sub-menu-item-link" data-tracking="interchange_fees_link" href="/about-visa/visa-in-europe/fees-and-interchange.html">Interchange fees</a></li></ul><ul>
+                                <li>
+                                    <a class="sub-sub-menu-item-link media-content" aria-label="Everyone accepted, everywhere A diverse and inclusive workplace where you belong" data-tracking="everyone_accepted_everywhere_link" href="/about-visa/diversity-inclusion.html">
+                                        <img class="lazy" src="/content/dam/VCOM/global/visa-everywhere/images/diversity-640x640.jpg" data-src="/content/dam/VCOM/global/visa-everywhere/images/diversity-640x640.jpg">
+                                        <p><b>Everyone accepted, everywhere</b></p>
+                                        <span class="sub-sub-menu-item-link-text">A diverse and inclusive workplace where you belong</span>
+                                        <span aria-hidden="true" class="visa-icon visa-icon-carat-right"></span>
+                                    </a>
+                                </li>
+                            </ul><ul></ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li><button aria-label="Visa Search" aria-expanded="false" class="vs-search-item-control visa-icon visa-icon-search" role="search"><span>Visa Search</span></button></li>
+    </ul>
+    <div class="vs-header-search-wrapper vs-header-collapsed" hidden="" style="height: 0px;">
+        <div class="vs-header-search-form-content">
+            <form class="vs-form vs-header-search-form">
+                <div class="vs-form-group">
+                    <span class="visa-icon visa-icon-search"></span>
+                    <input type="text" id="vs-header-search-focus-to" class="form-control vs-header-search-input" placeholder="Visa Search">
+                    <input type="submit" class="vs-header-search-submit" value="GO">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" class="vs-header-indicator-bar"><div class="vs-header-indicator-icon" style="left: 750px"></div></div>
+<div class="vs-header-bg vs-header-hidden" hidden=""></div>
+</nav>
+</header>
+<script src="https://cdn.visa.com/cdn/scripts/navigation/bundle.js"></script>
+<div class="cdn-header" data-cdn-header="true"></div>
+@*<header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                <partial name="_LoginPartial"/>
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>*@
+
+<div class="container">
+    <partial name="_CookieConsentPartial"/>
+    <main role="main" class="pb-3">
+        @this.RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+<environment names="Development">
+    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</environment>
+
+@this.RenderSection("Scripts", required: false)
+</body>
+</html>

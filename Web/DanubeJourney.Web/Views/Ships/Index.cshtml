@@ -1,0 +1,21 @@
+﻿@model DanubeJourney.Web.ViewModels.Ships.ShipsIndexViewModel
+@{
+    ViewData["Title"] = "Ships";
+}
+@foreach (var ship in Model.Collection)
+{
+    <div class="media">
+        <section class="media-image">
+            <img src="@ship.ImageUrl" class="mr-3" alt="@ship.Name">
+        </section>
+        <section class="media-body">
+            <header><h3 class="mt-0">@ship.Name</h3></header>
+            <form method="post" class="button inline" asp-area="" asp-controller="Ships" asp-action="Details">
+                <button type="submit" class="link-button" name="id" value="@ship.Id">
+                    Details
+                </button>
+            </form>
+            <p>@ship.Description</p>
+        </section>
+    </div>
+}
