@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using DanubeJourney.Web.InputModels.Employees;
-using DanubeJourney.Web.InputModels.Rooms;
-using DanubeJourney.Web.ViewModels.Employees;
-using DanubeJourney.Web.ViewModels.Rooms;
-
-namespace DanubeJourney.Services.Data.Contracts
+﻿namespace DanubeJourney.Services.Data.Contracts
 {
+    using System.Threading.Tasks;
+
+    using DanubeJourney.Web.InputModels.Rooms;
+    using DanubeJourney.Web.ViewModels.Rooms;
+
     public interface IRoomsService
     {
         Task<int> Create(RoomInputModel model);

@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using DanubeJourney.Data.Common.Models;
+    using DanubeJourney.Data.Models;
 
     public class EmployeesSeeder : ISeeder
     {
@@ -16,17 +16,22 @@
                 return;
             }
 
-            var employees = new List<string>
+            var employees = new Dictionary<string, string>
             {
-                "Ivan Georgiev", "Petar Petrov", "Georgi Ivanov", "Maya Manolova", "Korneliya Ninova", "Simeon Hristov",
+                ["Ivan Georgiev"] = "https://randomuser.me/api/portraits/men/91.jpg",
+                ["Petar Petrov"] = "https://robohash.org/officiavoluptatemeum.png?size=125x125&set=set1",
+                ["Georgi Ivanov"] = "https://robohash.org/placeatsitin.png?size=125x125&set=set1",
+                ["Maya Manolova"] = "https://robohash.org/etquodquo.png?size=125x125&set=set1",
+                ["Korneliya Ninova"] = "https://robohash.org/doloresfugavoluptate.png?size=125x125&set=set1",
+                ["Simeon Hristov"] = "https://robohash.org/etquodquo.png?size=125x125&set=set1",
             };
 
             foreach (var employee in employees)
             {
-                var fullName = employee;
+                var fullName = employee.Key;
                 var firstName = fullName.Split(" ")[0];
                 var lastName = fullName.Split(" ")[1];
-
+                var avatar = employee.Value;
                 var salary = (decimal)new Random().Next(2000, 5000);
                 var experience = new Random().Next(5, 15);
 
@@ -36,8 +41,11 @@
                     LastName = lastName,
                     Salary = salary,
                     Experience = experience,
+                    Avatar = avatar,
                 });
             }
+
+            await dbContext.SaveChangesAsync();
         }
     }
 }

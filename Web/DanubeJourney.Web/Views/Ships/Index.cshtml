@@ -9,8 +9,8 @@
             <img src="@ship.ImageUrl" class="mr-3" alt="@ship.Name">
         </section>
         <section class="media-body">
-            <header><h3 class="mt-0">@ship.Name</h3></header>
-            <form method="post" class="button inline" asp-area="" asp-controller="Ships" asp-action="Details">
+            <h3 class="mt-0">@ship.Name</h3>
+            <form method="post" class="button-primary inline" asp-area="" asp-controller="Ships" asp-action="Details">
                 <button type="submit" class="link-button" name="id" value="@ship.Id">
                     Details
                 </button>

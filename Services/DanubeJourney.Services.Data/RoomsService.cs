@@ -1,11 +1,12 @@
-﻿namespace DanubeJourney.Services.Data
+﻿using DanubeJourney.Web.InputModels.Rooms;
+using DanubeJourney.Web.ViewModels.Rooms;
+
+namespace DanubeJourney.Services.Data
 {
     using System;
     using System.Threading.Tasks;
 
     using DanubeJourney.Services.Data.Contracts;
-    using DanubeJourney.Web.InputModels.Rooms;
-    using DanubeJourney.Web.ViewModels.Rooms;
 
     public class RoomsService : IRoomsService
     {

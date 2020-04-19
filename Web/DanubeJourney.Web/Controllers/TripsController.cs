@@ -46,7 +46,7 @@
         }
 
         [HttpPost]
-        public IActionResult Edit(TripInputModel model)
+        public IActionResult Edit(TripViewModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -64,13 +64,7 @@
             return this.View(model);
         }
 
-        //public IActionResult Details()
-        //{
-        //    var id = this.TempData["id"].ToString();
-        //    var model = this._tripsService.Details(id);
-        //    return this.View(model);
-        //}
-
+        
         [HttpGet]
         public IActionResult Delete()
         {

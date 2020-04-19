@@ -1,4 +1,6 @@
-﻿namespace DanubeJourney.Web.ViewModels.Users
+﻿using DanubeJourney.Data.Models;
+
+namespace DanubeJourney.Web.ViewModels.Users
 {
     using System.Collections.Generic;
 

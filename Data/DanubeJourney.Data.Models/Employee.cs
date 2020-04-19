@@ -1,6 +1,7 @@
-﻿namespace DanubeJourney.Data.Common.Models
+﻿namespace DanubeJourney.Data.Models
 {
     using System;
+    using DanubeJourney.Data.Common.Models;
 
     public class Employee : BaseDeletableModel<string>
     {

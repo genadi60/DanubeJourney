@@ -1,14 +1,15 @@
-﻿namespace DanubeJourney.Data.Common.Models
+﻿namespace DanubeJourney.Data.Models
 {
     using System;
     using System.Collections.Generic;
+
+    using DanubeJourney.Data.Common.Models;
 
     public class Ship : BaseDeletableModel<string>
     {
         public Ship()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Gallery = new HashSet<Image>();
             this.Comments = new HashSet<Comment>();
             this.Facilities = new HashSet<Facility>();
             this.DeckPlans = new HashSet<Deck>();
@@ -33,18 +34,20 @@
 
         public string CaptainId { get; set; }
 
-        public virtual Employee Captain { get; set; }
+        public Employee Captain { get; set; }
 
         public string ImageUrl { get; set; }
 
-        public virtual ICollection<Image> Gallery { get; set; }
+        public string GalleryId { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public Gallery Gallery { get; set; }
 
-        public virtual ICollection<Facility> Facilities { get; set; }
+        public ICollection<Comment> Comments { get; set; }
 
-        public virtual ICollection<Deck> DeckPlans { get; set; }
+        public ICollection<Facility> Facilities { get; set; }
 
-        public virtual ICollection<Employee> Staff { get; set; }
+        public ICollection<Deck> DeckPlans { get; set; }
+
+        public ICollection<Employee> Staff { get; set; }
     }
 }

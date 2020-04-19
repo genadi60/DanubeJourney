@@ -11,7 +11,7 @@
 
         string Create(TripInputModel model);
 
-        Task<int> Edit(TripInputModel model);
+        Task<int> Edit(TripViewModel model);
 
         TripViewModel Details(string id);
     }

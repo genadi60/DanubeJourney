@@ -1,7 +1,9 @@
-﻿namespace DanubeJourney.Data.Common.Models
+﻿namespace DanubeJourney.Data.Models
 {
     using System;
     using System.Collections.Generic;
+
+    using DanubeJourney.Data.Common.Models;
 
     public class Trip : BaseDeletableModel<string>
     {
@@ -19,10 +21,14 @@
 
         public string ShipId { get; set; }
 
-        public virtual Ship Ship { get; set; }
+        public Ship Ship { get; set; }
 
         public string MapUrl { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }
+        public string GalleryId { get; set; }
+
+        public Gallery Gallery { get; set; }
+
+        public ICollection<Comment> Comments { get; set; }
     }
 }

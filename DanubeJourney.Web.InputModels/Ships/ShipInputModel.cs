@@ -1,4 +1,5 @@
 ﻿using DanubeJourney.Data.Common.Models;
+using DanubeJourney.Data.Models;
 using DanubeJourney.Services.Mapping;
 
 namespace DanubeJourney.Web.InputModels.Ships

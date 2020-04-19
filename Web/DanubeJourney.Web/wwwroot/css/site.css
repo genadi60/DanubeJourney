@@ -42,26 +42,26 @@ html {
 
 /* Typography*/
 body {
-    font: 12px/1.5 "Calibri Light", sans-serif !important
+    font: 12px "Calibri Light", sans-serif !important
        
 }
 h1 {
-    font-size: 2.2em;}
+    font-size: 2.5em;}
 
 h2 {
-    font-size: 2.0em;}
+    font-size: 2.2em;}
 
 h3 {
-    font-size: 1.5em;}
+    font-size: 1.9em;}
 
 h4 {
-    font-size: 1.3em;}
+    font-size: 1.6em;}
 
 h5 {
-    font-size: 1.2em;}
+    font-size: 1.4em;}
 
 h6 {
-    font-size: 1.1em;}
+    font-size: 1.2em;}
 
 @media (min-width: 600px) {
   html {
@@ -90,7 +90,7 @@ h1, h2, h3 {
   font-style: inherit;}
 
 .testimonials {
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;
   margin: 0;
   display: flex;
   justify-content: space-between;
@@ -312,7 +312,7 @@ nav {
 */
 form {
     max-width: 40rem;
-    margin: 0 auto;
+    margin-bottom: 0.8em;
     background-color: rgba(0, 0, 0, 0.2);
     color: #000;
     padding: 2rem;
@@ -366,9 +366,14 @@ label.remember {
 }
 
 .button-primary {
-  font-size: 1.1em;
-  font-weight: bold;
-  background-color: #69F; }
+    font-weight: bold;
+    display: inline-block;
+    font-size: 1.2em;
+    padding: 0.3rem 1rem;
+    border-radius: 0.3rem;
+    background-color: #69F;
+    color: #CC0;
+}
 
 .button-wrapper {
     display: flex;
@@ -519,15 +524,6 @@ ul.gallery {
     display: none;
 }
 
-.ship-details-container section.image {
-    overflow: hidden;
-    border-radius: 0.5rem;
-    box-shadow: 0.5rem 0.6rem 0.5rem 0 rgba(0, 0, 0, 0.5);
-    margin-bottom: 2rem;
-}
-
-
-
 .data-container {
     display: flex;
     justify-content: space-between;
@@ -544,6 +540,16 @@ div.media {
     flex-wrap: wrap;
 }
 
+.ship-details-container section.image {
+    display: block;
+    overflow: hidden;
+    min-width: 300px;
+    flex: 1 1 0;
+    border-radius: 0.5rem;
+    position: relative;
+    box-shadow: 0.5rem 0.6rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
 .media section.media-image {
     display: block;
     overflow: hidden;
@@ -552,7 +558,16 @@ div.media {
     flex: 1 1 0;
     border-radius: 0.5rem;
     margin-right: 2rem;
+    margin-bottom: 1rem;
     position: relative;
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.ship-details-container section.image:before{
+    display: block;
+    content: '';
+    padding-top: 56.25%;
+    background-color: #F00;
 }
 
 .media section.media-image:before {
@@ -562,9 +577,18 @@ div.media {
     background-color: #F00;
 }
 
+.ship-details-container section.image img{
+    display: block;
+    height: 100%;
+    width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .media section.media-image img {
     display: block;
-    max-height: 100%;
+    height: 100%;
     width: auto;
     position: absolute;
     top: 0;
@@ -590,11 +614,7 @@ div.media {
     cursor: pointer;
 }
 
-    .media-body .link-button:hover {
-        outline: none;
-        color: #FFF;
-    }
-
-/*.media-body .link-button:active {
-        color: red;
-}*/
+.media-body .link-button:hover {
+    outline: none;
+    color: #FFF;
+}

@@ -1,5 +1,7 @@
 ﻿
 
+using DanubeJourney.Data.Models;
+
 namespace DanubeJourney.Web.InputModels.Trips
 {
     using DanubeJourney.Services.Mapping;

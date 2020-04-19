@@ -1,8 +1,8 @@
-﻿namespace DanubeJourney.Data.Common.Models
+﻿namespace DanubeJourney.Data.Models
 {
     using System;
 
-    using DanubeJourney.Data.Models;
+    using DanubeJourney.Data.Common.Models;
 
     public class BookingCard : BaseDeletableModel<string>
     {

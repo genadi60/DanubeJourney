@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DanubeJourney.Data.Migrations
 {
     [DbContext(typeof(DanubeJourneyDbContext))]
-    [Migration("20200322190833_UpdateEmployees")]
-    partial class UpdateEmployees
+    [Migration("20200419153304_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace DanubeJourney.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.BookingCard", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.BookingCard", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -63,7 +63,7 @@ namespace DanubeJourney.Data.Migrations
                     b.ToTable("BookingCards");
                 });
 
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Comment", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,9 +75,6 @@ namespace DanubeJourney.Data.Migrations
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
@@ -111,425 +108,6 @@ namespace DanubeJourney.Data.Migrations
                     b.HasIndex("TripId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Deck", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DeckPlan")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShipId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ShipId");
-
-                    b.ToTable("Decks");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Employee", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateOfBird")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Experience")
-                        .HasColumnType("int");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("ShipId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Оccupation")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ShipId");
-
-                    b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Facility", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShipId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ShipId");
-
-                    b.ToTable("Facilities");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Feature", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("RoomId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("RoomId");
-
-                    b.ToTable("Features");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Image", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ShipId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ShipId");
-
-                    b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.ImageCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("ImageCategories");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Room", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("ImageId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("PlanId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("ImageId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PlanId");
-
-                    b.ToTable("Rooms");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.RoomCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("RoomCategories");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.RoomPlan", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoomPlanUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("RoomPlans");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Ship", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CaptainId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Crew")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Launched")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Length")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Passengers")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Staterooms")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Suites")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CaptainId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Ships");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Trip", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Duration")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MapUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ShipId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("ShipId");
-
-                    b.ToTable("Trips");
                 });
 
             modelBuilder.Entity("DanubeJourney.Data.Models.DanubeJourneyRole", b =>
@@ -657,6 +235,369 @@ namespace DanubeJourney.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("DanubeJourney.Data.Models.Deck", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeckPlan")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShipId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ShipId");
+
+                    b.ToTable("Decks");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Employee", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Avatar")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateOfBird")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Experience")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Profession")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ShipId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ShipId");
+
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Facility", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShipId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ShipId");
+
+                    b.ToTable("Facilities");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Feature", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("RoomId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("Features");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Gallery", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Galleries");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.ImageCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GalleryId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GalleryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("ImageCategories");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PlanId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("ImageId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PlanId");
+
+                    b.ToTable("Rooms");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.RoomCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShipId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ShipId");
+
+                    b.ToTable("RoomCategories");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.RoomPlan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoomPlanUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("RoomPlans");
+                });
+
             modelBuilder.Entity("DanubeJourney.Data.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -687,6 +628,113 @@ namespace DanubeJourney.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.ToTable("Settings");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Ship", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CaptainId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Crew")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GalleryId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Launched")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Passengers")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Staterooms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Suites")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CaptainId");
+
+                    b.HasIndex("GalleryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("Ships");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Trip", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Duration")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GalleryId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MapUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ShipId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GalleryId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("ShipId");
+
+                    b.ToTable("Trips");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -793,15 +841,15 @@ namespace DanubeJourney.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.BookingCard", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.BookingCard", b =>
                 {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Room", "Room")
+                    b.HasOne("DanubeJourney.Data.Models.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DanubeJourney.Data.Common.Models.Trip", "Trip")
+                    b.HasOne("DanubeJourney.Data.Models.Trip", "Trip")
                         .WithMany()
                         .HasForeignKey("TripId");
 
@@ -810,87 +858,19 @@ namespace DanubeJourney.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Comment", b =>
+            modelBuilder.Entity("DanubeJourney.Data.Models.Comment", b =>
                 {
                     b.HasOne("DanubeJourney.Data.Models.DanubeJourneyUser", "Author")
                         .WithMany("Comments")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
+                    b.HasOne("DanubeJourney.Data.Models.Ship", null)
                         .WithMany("Comments")
                         .HasForeignKey("ShipId");
 
-                    b.HasOne("DanubeJourney.Data.Common.Models.Trip", null)
+                    b.HasOne("DanubeJourney.Data.Models.Trip", null)
                         .WithMany("Comments")
                         .HasForeignKey("TripId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Deck", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
-                        .WithMany("DeckPlans")
-                        .HasForeignKey("ShipId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Employee", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
-                        .WithMany("Staf")
-                        .HasForeignKey("ShipId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Facility", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
-                        .WithMany("Facilities")
-                        .HasForeignKey("ShipId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Feature", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Room", null)
-                        .WithMany("Features")
-                        .HasForeignKey("RoomId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Image", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.ImageCategory", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("DanubeJourney.Data.Common.Models.Ship", null)
-                        .WithMany("Gallery")
-                        .HasForeignKey("ShipId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Room", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.RoomCategory", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("DanubeJourney.Data.Common.Models.Image", "Image")
-                        .WithMany()
-                        .HasForeignKey("ImageId");
-
-                    b.HasOne("DanubeJourney.Data.Common.Models.RoomPlan", "Plan")
-                        .WithMany()
-                        .HasForeignKey("PlanId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Ship", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Employee", "Captain")
-                        .WithMany()
-                        .HasForeignKey("CaptainId");
-                });
-
-            modelBuilder.Entity("DanubeJourney.Data.Common.Models.Trip", b =>
-                {
-                    b.HasOne("DanubeJourney.Data.Common.Models.Ship", "Ship")
-                        .WithMany()
-                        .HasForeignKey("ShipId");
                 });
 
             modelBuilder.Entity("DanubeJourney.Data.Models.DanubeJourneyUser", b =>
@@ -898,6 +878,100 @@ namespace DanubeJourney.Data.Migrations
                     b.HasOne("DanubeJourney.Data.Models.DanubeJourneyRole", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Deck", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Ship", null)
+                        .WithMany("DeckPlans")
+                        .HasForeignKey("ShipId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Employee", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Ship", null)
+                        .WithMany("Staff")
+                        .HasForeignKey("ShipId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Facility", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Ship", null)
+                        .WithMany("Facilities")
+                        .HasForeignKey("ShipId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Feature", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Room", null)
+                        .WithMany("Features")
+                        .HasForeignKey("RoomId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Image", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.ImageCategory", "Category")
+                        .WithMany("Collection")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.ImageCategory", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Gallery", null)
+                        .WithMany("Categories")
+                        .HasForeignKey("GalleryId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Room", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.RoomCategory", "Category")
+                        .WithMany("Rooms")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DanubeJourney.Data.Models.Image", "Image")
+                        .WithMany()
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DanubeJourney.Data.Models.RoomPlan", "Plan")
+                        .WithMany()
+                        .HasForeignKey("PlanId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.RoomCategory", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Ship", "Ship")
+                        .WithMany()
+                        .HasForeignKey("ShipId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Ship", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Employee", "Captain")
+                        .WithMany()
+                        .HasForeignKey("CaptainId");
+
+                    b.HasOne("DanubeJourney.Data.Models.Gallery", "Gallery")
+                        .WithMany()
+                        .HasForeignKey("GalleryId");
+                });
+
+            modelBuilder.Entity("DanubeJourney.Data.Models.Trip", b =>
+                {
+                    b.HasOne("DanubeJourney.Data.Models.Gallery", "Gallery")
+                        .WithMany()
+                        .HasForeignKey("GalleryId");
+
+                    b.HasOne("DanubeJourney.Data.Models.Ship", "Ship")
+                        .WithMany()
+                        .HasForeignKey("ShipId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

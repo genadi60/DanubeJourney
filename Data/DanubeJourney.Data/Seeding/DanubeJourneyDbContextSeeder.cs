@@ -28,6 +28,8 @@
                               new RolesSeeder(),
                               new SettingsSeeder(),
                               new EmployeesSeeder(),
+                              new ShipsSeeder(),
+                              new TripsSeeder(),
                           };
 
             foreach (var seeder in seeders)

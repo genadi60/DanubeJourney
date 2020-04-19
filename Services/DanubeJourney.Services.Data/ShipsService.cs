@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DanubeJourney.Data.Common.Models;
-using DanubeJourney.Data.Common.Repositories;
-using DanubeJourney.Services.Mapping;
-
-namespace DanubeJourney.Services.Data
+﻿namespace DanubeJourney.Services.Data
 {
     using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
+    using DanubeJourney.Data.Common.Models;
+    using DanubeJourney.Data.Common.Repositories;
+    using DanubeJourney.Data.Models;
     using DanubeJourney.Services.Data.Contracts;
+    using DanubeJourney.Services.Mapping;
     using DanubeJourney.Web.InputModels.Ships;
     using DanubeJourney.Web.ViewModels.Ships;
 

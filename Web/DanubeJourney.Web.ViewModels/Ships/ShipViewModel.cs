@@ -1,4 +1,5 @@
-﻿using DanubeJourney.Services.Mapping;
+﻿using DanubeJourney.Data.Models;
+using DanubeJourney.Services.Mapping;
 
 namespace DanubeJourney.Web.ViewModels.Ships
 {

@@ -3,8 +3,8 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using DanubeJourney.Data.Common.Models;
     using DanubeJourney.Data.Common.Repositories;
+    using DanubeJourney.Data.Models;
     using DanubeJourney.Services.Data.Contracts;
     using DanubeJourney.Services.Mapping;
     using DanubeJourney.Web.InputModels.Trips;
@@ -44,13 +44,12 @@
             return trip.Id;
         }
 
-        public async Task<int> Edit(TripInputModel model)
+        public async Task<int> Edit(TripViewModel model)
         {
             var trip = new Trip();
             this._tripRepository.Update(trip);
 
-            await this._tripRepository.SaveChangesAsync();
-            return 1;
+            return await this._tripRepository.SaveChangesAsync();
         }
 
         public TripViewModel Details(string id)

@@ -8,7 +8,6 @@
 
     using DanubeJourney.Data.Common.Models;
     using DanubeJourney.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
@@ -51,6 +50,8 @@
         public DbSet<BookingCard> BookingCards { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
+
+        public DbSet<Gallery> Galleries { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
