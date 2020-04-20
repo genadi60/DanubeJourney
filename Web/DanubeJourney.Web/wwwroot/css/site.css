@@ -90,7 +90,7 @@ h1, h2, h3 {
   font-style: inherit;}
 
 .testimonials {
-  padding: 1rem 2rem;
+  padding: 0 !important;
   margin: 0;
   display: flex;
   justify-content: space-between;
@@ -139,6 +139,11 @@ h1, h2, h3 {
 /*
 * Main Navigation Style
 */
+.inner a:hover,
+.inner a:focus {
+    text-decoration: none !important;
+}
+
 nav {
   font-family: "Calibri Light", sans-serif;
   font-weight: 400;
@@ -155,7 +160,7 @@ nav {
     list-style: none outside; }
   nav li.active-page > a {
     background: #900; }
-  nav a {
+  nav.header-nav a {
     display: block;
     padding: 0.3em 1em;
     background: rgba(0, 0, 200, 0.6);
@@ -164,8 +169,8 @@ nav {
     margin-right: 0.2rem;
     color: #BB0;
     transition: background 1s ease; }
-  nav a:focus,
-  nav a:hover {
+  nav.header-nav a:focus,
+  nav.header-nav a:hover {
     background: #900;
     text-decoration: none;
     color: #BBB;}
@@ -251,7 +256,7 @@ nav {
         padding-left: 2rem; }
       #toggle-main-nav + .site-header .brand {
         position: relative;
-        z-index: 9000; }
+      }
       #toggle-main-nav + .site-header .header-nav {
         display: none; }
       #toggle-main-nav:checked + .site-header .header-nav {
@@ -438,7 +443,6 @@ ul.gallery {
     padding: 1rem var(--sizing-lt-base) 0.5rem var(--sizing-lt-base);
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.5);
 }
 
 .site-header .inner .brand {
@@ -451,16 +455,17 @@ ul.gallery {
 }
 
 @media (min-width: 991px) {
-    .site-header .inner{
+    .site-header .inner {
         background-color: rgba(255, 255, 255, 0.7);
         position: fixed;
         width: 100%;
+        box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.5);
         z-index: 9000;
     }
 }
 @media (max-width: 990px) {
     .site-header .inner {
-        /* flex-direction: column;*/
+         flex-direction: column;
     }
 
     .site-header .inner .cta {
@@ -533,59 +538,44 @@ form#account a{
     color: #000;
 }
 
+
 div.media {
-    display:flex;
+    display: flex;
     margin-bottom: 2rem;
     flex: 1 1 0;
     flex-wrap: wrap;
 }
 
-.ship-details-container section.image {
+.ship-details-container section.image:before,
+.media section.media-image:before {
+    display: block;
+    content: '';
+    padding-top: 56.25%;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.ship-details-container section.image,
+.media section.media-image {
     display: block;
     overflow: hidden;
-    min-width: 300px;
     flex: 1 1 0;
     border-radius: 0.5rem;
     position: relative;
     box-shadow: 0.5rem 0.6rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
+.ship-details-container section.image {
+    min-width: 200px;
+}
+
 .media section.media-image {
-    display: block;
-    overflow: hidden;
-    min-width: 300px;
+    min-width: 200px;
     max-width: 500px;
-    flex: 1 1 0;
-    border-radius: 0.5rem;
-    margin-right: 2rem;
+    margin-right: 1rem;
     margin-bottom: 1rem;
-    position: relative;
-    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
-.ship-details-container section.image:before{
-    display: block;
-    content: '';
-    padding-top: 56.25%;
-    background-color: #F00;
-}
-
-.media section.media-image:before {
-    display: block;
-    content: '';
-    padding-top: 56.25%;
-    background-color: #F00;
-}
-
-.ship-details-container section.image img{
-    display: block;
-    height: 100%;
-    width: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
+.ship-details-container section.image img,
 .media section.media-image img {
     display: block;
     height: 100%;
@@ -597,6 +587,7 @@ div.media {
 
 .media section.media-body {
     display: flex;
+    min-width: 200px;
     flex: 1 1 0;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -617,4 +608,25 @@ div.media {
 .media-body .link-button:hover {
     outline: none;
     color: #FFF;
+}
+
+.alert-dismissible .close {
+    padding: 0.2em 1rem !important;
+}
+
+.border-top {
+    border-top: 1px solid #A5A5A5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #A5A5A5;
+}
+
+.box-shadow {
+    box-shadow: 0 .5rem .4rem rgba(0, 0, 0, .2);
+}
+
+.navbar-toggler-icon {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
 }

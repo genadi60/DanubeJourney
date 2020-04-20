@@ -27,51 +27,25 @@
 <partial name="_CookieConsentPartial" />
 <header class="site-header banner @(ViewData["size"] == null ? "size-small" : ViewData["size"])" style="background-image: url(https://www.compas.bg/ca/images/remote/offers/7403/4.jpg&auto=format&fit=crop&w=1489&q=80)">
     <div class="inner">
-        <h1 class="brand">
-            <img src="~/css/Images/favicon-32x32.png" alt="icon" />
-            <a asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
-        </h1>
+        <a asp-area="" asp-controller="Home" asp-action="Index">
+            <h1 class="brand">
+                <img src="~/css/Images/favicon-32x32.png" alt="icon" />
+                @GlobalConstants.SystemName
+            </h1>
+        </a>
         <label for="toggle-main-nav" class="toggle-main-nav-button fas"><span>Menu</span></label>
         <nav class="header-nav">
             <ul>
                 <li>
                     <a asp-area="" asp-controller="Trips" asp-action="Index"><i class="far fa-compass"></i> Trips</a>
                     <ul>
-                        <partial name="_TripsPartial"/>
+                        <partial name="_TripsPartial" />
                     </ul>
                 </li>
                 <li>
                     <a asp-area="" asp-controller="Ships" asp-action="Index"><i class="fas fa-ship"></i> Ships</a>
                     <ul>
-                        <partial name="_ShipsPartial"/>
-                    </ul>
-                </li>
-                <li>
-                    <a href='/Hyde/products.html'>
-                        <span class="title"><i class="fas fa-industry"></i> Products</span>
-                        <span class="date"></span>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href='/Hyde/contacts/'>
-                                <span class="title"><i class="far fa-compass"></i> Contacts</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='/Hyde/gallery.html'>
-                                <span class="title"><i class="fas fa-photo-video"></i> Gallery</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='/Hyde/products.html'>
-                                <span class="title"><i class="fas fa-industry"></i> Products</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='/Hyde/about/'>
-                                <span class="title"><i class="fas fa-info"></i> About</span>
-                            </a>
-                        </li>
+                        <partial name="_ShipsPartial" />
                     </ul>
                 </li>
                 <li>
@@ -92,11 +66,6 @@
                         <li>
                             <a href='/Hyde/products.html'>
                                 <span class="title"><i class="fas fa-industry"></i> Products</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Identity" asp-page="/Account/Register">
-                                <span class="title"><i class="fas fa-user-plus"></i> Register</span>
                             </a>
                         </li>
                     </ul>
