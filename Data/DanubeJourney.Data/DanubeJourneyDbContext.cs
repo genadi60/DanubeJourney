@@ -39,7 +39,7 @@
 
         public DbSet<RoomPlan> RoomPlans { get; set; }
 
-        public DbSet<RoomCategory> RoomCategories { get; set; }
+        //public DbSet<RoomCategory> RoomCategories { get; set; }
 
         public DbSet<ImageCategory> ImageCategories { get; set; }
 

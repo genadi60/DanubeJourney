@@ -21,6 +21,7 @@
         <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/site.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
+    <script src="~/js/site.min.js"></script>
 </head>
 <body class="page hyde">
 <input type="checkbox" id="toggle-main-nav">
@@ -37,7 +38,7 @@
         <nav class="header-nav">
             <ul>
                 <li>
-                    <a asp-area="" asp-controller="Trips" asp-action="Index"><i class="far fa-compass"></i> Trips</a>
+                    <a id="trip" asp-area="" asp-controller="Home" asp-action="Index"><i class="far fa-compass"></i> Trips</a>
                     <ul>
                         <partial name="_TripsPartial" />
                     </ul>
@@ -98,6 +99,7 @@
         <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </environment>
+    @*<script>solve()</script>*@
             @this.RenderSection("Scripts", required: false)
 </body>
 </html>

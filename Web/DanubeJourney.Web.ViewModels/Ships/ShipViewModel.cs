@@ -1,9 +1,11 @@
-﻿using DanubeJourney.Data.Models;
-using DanubeJourney.Services.Mapping;
-
-namespace DanubeJourney.Web.ViewModels.Ships
+﻿namespace DanubeJourney.Web.ViewModels.Ships
 {
-    using DanubeJourney.Data.Common.Models;
+    using System.Net;
+    using System.Text.RegularExpressions;
+
+    using DanubeJourney.Data.Models;
+    using DanubeJourney.Services.Mapping;
+    using Ganss.XSS;
 
     public class ShipViewModel : IMapFrom<Ship>
     {
@@ -12,7 +14,11 @@ namespace DanubeJourney.Web.ViewModels.Ships
         public string Name { get; set; }
 
         public string Description { get; set; }
-        
+
+        public string ShortDescription => WebUtility.HtmlDecode(Regex.Replace(this.Description.Substring(0, 300), @"<[^>]+>", string.Empty) + "...");
+
+        public string SanitaisedDescription => new HtmlSanitizer().Sanitize(this.Description);
+
         public int Launched { get; set; }
 
         public int Passengers { get; set; }

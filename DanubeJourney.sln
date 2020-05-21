@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DanubeJourney.Web.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DanubeJourney.Web.ViewModels", "Web\DanubeJourney.Web.ViewModels\DanubeJourney.Web.ViewModels.csproj", "{13B7AACB-9C85-4409-8D4B-95A67D0DFFF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanubeJourney.Web.InputModels", "DanubeJourney.Web.InputModels\DanubeJourney.Web.InputModels.csproj", "{9E48EB28-9766-472F-9A9D-FD1A92EE6584}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DanubeJourney.Web.InputModels", "DanubeJourney.Web.InputModels\DanubeJourney.Web.InputModels.csproj", "{9E48EB28-9766-472F-9A9D-FD1A92EE6584}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,5 +1,4 @@
-﻿using DanubeJourney.Data.Common.Models;
-using DanubeJourney.Data.Models;
+﻿using DanubeJourney.Data.Models;
 using DanubeJourney.Services.Mapping;
 
 namespace DanubeJourney.Web.InputModels.Ships
@@ -25,5 +24,7 @@ namespace DanubeJourney.Web.InputModels.Ships
         public virtual Employee Captain { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public string Description { get; set; }
     }
 }

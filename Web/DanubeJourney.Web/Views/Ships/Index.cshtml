@@ -6,7 +6,7 @@
 {
     <div class="media">
         <section class="media-image">
-            <img src="@ship.ImageUrl" class="mr-3" alt="@ship.Name">
+            <a asp-area="" asp-controller="Images" asp-action="Upload"><img src="@ship.ImageUrl" class="mr-3" alt="@ship.Name"></a>
         </section>
         <section class="media-body">
             <h3 class="mt-0">@ship.Name</h3>
@@ -15,7 +15,7 @@
                     Details
                 </button>
             </form>
-            <p>@ship.Description</p>
+            <div>@Html.Raw(ship.ShortDescription.Replace("Avalon", "DanubeJourney"))</div>
         </section>
     </div>
 }

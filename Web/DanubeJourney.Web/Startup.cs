@@ -4,6 +4,7 @@ namespace DanubeJourney.Web
 {
     using System.Reflection;
 
+    using CloudinaryDotNet;
     using DanubeJourney.Data;
     using DanubeJourney.Data.Common;
     using DanubeJourney.Data.Common.Repositories;
@@ -39,7 +40,16 @@ namespace DanubeJourney.Web
             services.AddDbContext<DanubeJourneyDbContext>(
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDefaultIdentity<DanubeJourneyUser>(IdentityOptionsProvider.GetIdentityOptions)
+            services.AddDefaultIdentity<DanubeJourneyUser>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 3;
+            })
                 .AddRoles<DanubeJourneyRole>().AddEntityFrameworkStores<DanubeJourneyDbContext>();
 
             services.Configure<CookiePolicyOptions>(
@@ -65,6 +75,14 @@ namespace DanubeJourney.Web
             services.AddTransient<ITripsService, TripsService>();
             services.AddTransient<IShipsService, ShipsService>();
             services.AddTransient<IEmployeesService, EmployeesService>();
+
+            // Cloudinary Setup
+            var cloudinaryAccount = new Account(
+                                                "dunckchunck",
+                                                "894947724132838",
+                                                "cKmsQvDULIhG5kFHTNYD_vMbJWI");
+            var cloudinary = new Cloudinary(cloudinaryAccount);
+            services.AddSingleton(cloudinary);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

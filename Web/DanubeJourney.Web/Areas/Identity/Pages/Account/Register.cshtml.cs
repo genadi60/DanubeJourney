@@ -1,32 +1,35 @@
-﻿namespace DanubeJourney.Web.Areas.Identity.Pages.Account
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Threading.Tasks;
+
+using DanubeJourney.Data.Common.Repositories;
+using DanubeJourney.Data.Models;
+using DanubeJourney.Data.Repositories;
+using DanubeJourney.Services.Messaging;
+using DanubeJourney.Web.Common;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using IEmailSender = DanubeJourney.Services.Messaging.IEmailSender;
+
+namespace DanubeJourney.Web.Areas.Identity.Pages.Account
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.Linq;
-    using System.Text;
-    using System.Text.Encodings.Web;
-    using System.Threading.Tasks;
-
-    using DanubeJourney.Data.Common.Repositories;
-    using DanubeJourney.Data.Models;
-    using DanubeJourney.Data.Repositories;
-    using DanubeJourney.Services.Messaging;
-    using Microsoft.AspNetCore.Authentication;
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.Services;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.RazorPages;
-    using Microsoft.AspNetCore.WebUtilities;
-    using Microsoft.Extensions.Logging;
-
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
         private readonly SignInManager<DanubeJourneyUser> _signInManager;
         private readonly UserManager<DanubeJourneyUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
-        private readonly Services.Messaging.IEmailSender _emailSender;
+        private readonly IEmailSender _emailSender;
         private readonly RoleManager<DanubeJourneyRole> _roleManager;
         private readonly IRepository<IdentityUserRole<string>> _userRoleRepository;
 
@@ -34,7 +37,7 @@
             UserManager<DanubeJourneyUser> userManager,
             SignInManager<DanubeJourneyUser> signInManager,
             ILogger<RegisterModel> logger,
-            Services.Messaging.IEmailSender emailSender,
+            IEmailSender emailSender,
             RoleManager<DanubeJourneyRole> roleManager,
             IRepository<IdentityUserRole<string>> userRoleRepository)
         {
@@ -47,13 +50,13 @@
         }
 
         [BindProperty]
-        public InputModel Input { get; set; }
+        public RegisterInputModel Input { get; set; }
 
         public string ReturnUrl { get; set; }
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-        public class InputModel
+        public class RegisterInputModel
         {
             [Required]
             [StringLength(20, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 3)]
@@ -85,25 +88,45 @@
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl = returnUrl ??Url.Content("~/");
+            returnUrl = returnUrl ?? this.Url.Content("~/");
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (ModelState.IsValid)
+            if (this.ModelState.IsValid)
             {
-                var role = this._roleManager.Roles.FirstOrDefault(r => r.Name == "User");
-                var user = new DanubeJourneyUser { UserName = this.Input.Username, Email = this.Input.Email };
-                if (!this._userManager.Users.Any())
+                var user = new DanubeJourneyUser
                 {
-                    role = this._roleManager.Roles?.FirstOrDefault(r => r.Name == "Administrator");
+                    UserName = this.Input.Username,
+                    Email = this.Input.Email,
+                };
+                var roleName = this._userManager.Users.Any() ? "User" : "Administrator";
+                user.Role = this._roleManager.Roles.FirstOrDefault(r => r.Name == roleName);
+
+                // For validating unique email
+                IdentityResult result = null;
+                IdentityError[] customErrors = null;
+                try
+                {
+                    result = await this._userManager.CreateAsync(user, this.Input.Password);
+                }
+                catch (DbUpdateException ex)
+                {
+                    result = new IdentityResult();
+
+                    if (ex.InnerException.Message.Contains("IX_AspNetUsers_Email"))
+                    {
+                        var exceptionMessage = $"User with email {user.Email} already exists.";
+                        customErrors = new[]
+                        {
+                            new IdentityError { Code = string.Empty, Description = exceptionMessage },
+                        };
+                    }
                 }
 
-                user.Role = role;
-                var result = await this._userManager.CreateAsync(user, this.Input.Password);
                 if (result.Succeeded)
                 {
                     this._logger.LogInformation("User created a new account with password.");
                     var userRole = new IdentityUserRole<string>
                     {
-                        RoleId = role?.Id,
+                        RoleId = user.Role?.Id,
                         UserId = user.Id,
                     };
                     user.Roles.Add(userRole);
@@ -116,13 +139,14 @@
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code },
                         protocol: this.Request.Scheme);
-
+                    var emailContent = callbackUrl.GetConfirmationEmailContent();
                     await this._emailSender.SendEmailAsync(
                         "trip@danube.journey.com",
                         "admin",
                         this.Input.Email,
                         "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                        emailContent);
+                    /*$"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."*/
 
                     if (this._userManager.Options.SignIn.RequireConfirmedAccount)
                     {

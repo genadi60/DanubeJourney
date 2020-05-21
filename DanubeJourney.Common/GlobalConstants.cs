@@ -13,5 +13,7 @@
         public const string AccountantRoleName = "Accountant";
 
         public const string EmailSenderKey = "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";
+
+        public const string EnvironmentVariable = "CLOUDINARY_URL = cloudinary://894947724132838:cKmsQvDULIhG5kFHTNYD_vMbJWI@dunckchunck";
     }
 }

@@ -11,8 +11,6 @@
             this.Features = new HashSet<Feature>();
         }
 
-        public int CategoryId { get; set; }
-
         public RoomCategory Category { get; set; }
 
         public decimal Price { get; set; }

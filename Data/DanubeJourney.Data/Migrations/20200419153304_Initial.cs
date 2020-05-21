@@ -121,7 +121,7 @@ namespace DanubeJourney.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    RoleId = table.Column<string>(nullable: true)
+                    RoleId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {
@@ -145,7 +145,7 @@ namespace DanubeJourney.Data.Migrations
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
                     Name = table.Column<string>(nullable: true),
-                    GalleryId = table.Column<string>(nullable: true)
+                    GalleryId = table.Column<string>(nullable: true),
                 },
                 constraints: table =>
                 {

@@ -35,6 +35,7 @@
                 Crew = model.Crew,
                 CaptainId = model.CaptainId,
                 ImageUrl = model.ImageUrl,
+                Description = model.Description,
             };
 
             await this._repository.AddAsync(ship);

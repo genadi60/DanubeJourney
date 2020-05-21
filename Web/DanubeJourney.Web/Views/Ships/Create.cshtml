@@ -6,12 +6,22 @@
     var captains = Service.Index().Collection.Where(e => e.Profession != null && e.Profession.Equals("Captain"));
 }
 
+<script src="/lib/tinymce/tinymce.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "image paste table link code media"
+        ]
+    });
+</script>
+
 <h1>Create</h1>
 
 <h4>ShipInputModel</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+
+    
         <form asp-controller="Ships" asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -50,7 +60,7 @@
                 <span asp-validation-for="Suites" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CaptainId" class="control-label"></label>
+                <label asp-for="Captain" class="control-label"></label>
                 <select asp-for="CaptainId" class="form-control">
                     <option selected>Choose...</option>
                     @foreach (var captain in captains)
@@ -66,11 +76,16 @@
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            <hr />
+            <input type="submit" value="Create" class="btn btn-primary" />
+            
         </form>
-    </div>
-</div>
+    
+
 
 <div>
     <a asp-action="Index">Back to List</a>
