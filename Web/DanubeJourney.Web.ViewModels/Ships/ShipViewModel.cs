@@ -15,9 +15,9 @@
 
         public string Description { get; set; }
 
-        public string ShortDescription => WebUtility.HtmlDecode(Regex.Replace(this.Description.Substring(0, 300), @"<[^>]+>", string.Empty) + "...");
+        //public string ShortDescription => WebUtility.HtmlDecode(Regex.Replace(this.Description.Substring(0, 300), @"<[^>]+>", string.Empty) + "...");
 
-        public string SanitaisedDescription => new HtmlSanitizer().Sanitize(this.Description);
+        //public string SanitaisedDescription => new HtmlSanitizer().Sanitize(this.Description);
 
         public int Launched { get; set; }
 

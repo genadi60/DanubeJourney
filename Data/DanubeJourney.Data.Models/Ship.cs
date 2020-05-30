@@ -10,9 +10,8 @@
         public Ship()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Rooms = new HashSet<Room>();
             this.Comments = new HashSet<Comment>();
-            this.Facilities = new HashSet<Facility>();
-            this.DeckPlans = new HashSet<Deck>();
             this.Staff = new HashSet<Employee>();
         }
 
@@ -34,19 +33,23 @@
 
         public string CaptainId { get; set; }
 
-        public Employee Captain { get; set; }
+        public virtual Employee Captain { get; set; }
 
         public string ImageUrl { get; set; }
 
+        public string DeckPlansUrl { get; set; }
+
+        public string Amenities { get; set; }
+
+        public string Dining { get; set; }
+
         public string GalleryId { get; set; }
 
-        public Gallery Gallery { get; set; }
+        public virtual ShipGallery Gallery { get; set; }
+
+        public ICollection<Room> Rooms { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
-
-        public ICollection<Facility> Facilities { get; set; }
-
-        public ICollection<Deck> DeckPlans { get; set; }
 
         public ICollection<Employee> Staff { get; set; }
     }

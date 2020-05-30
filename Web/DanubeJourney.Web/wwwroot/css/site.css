@@ -303,6 +303,10 @@ nav {
   opacity: 0;
   pointer-events: none; }
 
+div.container {
+    position: relative;
+}
+
 /*
 * Footer Navigation Style
 
@@ -545,9 +549,29 @@ form#account a{
 
 div.media {
     display: flex;
+    flex-direction:column;
     margin-bottom: 2rem;
     flex: 1 1 0;
     flex-wrap: wrap;
+    position: relative;
+}
+
+#ship.container {
+    position: relative;
+}
+
+#ship {
+    padding-left: 151px;
+    overflow: hidden;
+}
+
+#ship:before {
+    display: table;
+    content: "";
+}
+
+#ship {
+    clear: both;
 }
 
 .ship-details-container section.image:before,
@@ -562,10 +586,15 @@ div.media {
 .media section.media-image {
     display: block;
     overflow: hidden;
-    flex: 1 1 0;
     border-radius: 0.5rem;
     position: relative;
     box-shadow: 0.5rem 0.6rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.media section.media-image:after {
+    display: block;
+    content: "";
+    clear: both;
 }
 
 .ship-details-container section.image {
@@ -573,8 +602,8 @@ div.media {
 }
 
 .media section.media-image {
-    min-width: 200px;
-    max-width: 500px;
+    float: left;
+    min-width: 300px;
     margin-right: 1rem;
     margin-bottom: 1rem;
 }
@@ -589,19 +618,22 @@ div.media {
     left: 0;
 }
 
-.media section.media-body {
-    display: flex;
-    min-width: 200px;
-    flex: 1 1 0;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 .inline {
     display: inline;
 }
 
-.media-body .link-button {
+.media-header {
+    display: flex;
+    flex-direction: row;
+}
+
+.media-header > form.button-primary {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.media-header .link-button {
     background: none;
     border: none;
     color: var(--color-basic-border);
@@ -609,9 +641,14 @@ div.media {
     cursor: pointer;
 }
 
-.media-body .link-button:hover {
+.media-header .link-button:hover {
     outline: none;
     color: #FFF;
+}
+
+.media-body {
+    display: block;
+    float: left;
 }
 
 .alert-dismissible .close {
@@ -633,4 +670,85 @@ div.media {
 .navbar-toggler-icon {
     width: 1.5rem !important;
     height: 1.5rem !important;
+}
+
+        /*
+    * Ship details
+*/
+@media (max-width: 1460px) {
+    #av-sidebar {
+        height: 280px;
+    }
+}
+
+#av-sidebar {
+    width: 150px;
+    position: absolute;
+    background: #f4f4f4;
+    left: 0;
+}
+
+#av-sidebar-top {
+    border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    margin: 0 15px 10px;
+}
+
+.sidebar-a img {
+    margin: 0 auto;
+    display: block;
+    float: none;
+}
+
+.sidebar-a p {
+    font-size: 11px;
+    color: #004982;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 5px;
+    margin-bottom: 0;
+    padding-bottom: 5px;
+}
+
+#ship #shipname {
+    margin: 0 15px;
+    border-bottom: 1px solid #cccccc;
+}
+
+#shipname p {
+    text-align: center;
+    font-size: 13px;
+    padding: 2px 0 8px;
+    margin-bottom: 0;
+    color: #002E5E;
+    font-weight: bold;
+    margin-left: -10px;
+    margin-right: -10px;
+    text-transform: uppercase;
+}
+
+#av-sidebar-nav #sidebar-list {
+    margin-left: 0;
+    list-style: none;
+}
+
+#av-sidebar-nav #sidebar-list a {
+    text-transform: uppercase;
+    color: #595959;
+    text-decoration: none;
+}
+
+#av-sidebar .sidebar-misc {
+    padding: 10px 0 10px;
+    border-top: 1px solid #c8c8c8;
+    margin: 0 15px 0;
+    border-bottom: 1px solid #c8c8c8;
+}
+
+.sidebar-misc a {
+    display: block;
+    padding: 5px;
+    font-size: 12px;
+    text-transform: uppercase;
 }

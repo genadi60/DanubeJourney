@@ -6,23 +6,22 @@
 
     public class Room : BaseDeletableModel<int>
     {
-        public Room()
-        {
-            this.Features = new HashSet<Feature>();
-        }
+        public RoomType Type { get; set; }
 
         public RoomCategory Category { get; set; }
 
         public decimal Price { get; set; }
 
-        public int PlanId { get; set; }
+        public int Area { get; set; }
 
-        public RoomPlan Plan { get; set; }
+        public string PlanUrl { get; set; }
 
-        public int ImageId { get; set; }
+        public string ImageUrl { get; set; }
 
-        public Image Image { get; set; }
+        public string ShipId { get; set; }
 
-        public ICollection<Feature> Features { get; set; }
+        public virtual Ship Ship { get; set; }
+
+        public string Features { get; set; }
     }
 }

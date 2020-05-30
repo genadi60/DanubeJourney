@@ -137,7 +137,7 @@ namespace DanubeJourney.Web.Areas.Identity.Pages.Account
                     var callbackUrl = this.Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
-                        values: new { area = "Identity", userId = user.Id, code = code },
+                        values: new { userId = user.Id, code = code },
                         protocol: this.Request.Scheme);
                     var emailContent = callbackUrl.GetConfirmationEmailContent();
                     await this._emailSender.SendEmailAsync(
@@ -146,11 +146,11 @@ namespace DanubeJourney.Web.Areas.Identity.Pages.Account
                         this.Input.Email,
                         "Confirm your email",
                         emailContent);
-                    /*$"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."*/
 
-                    if (this._userManager.Options.SignIn.RequireConfirmedAccount)
+                    // $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>."
+                    if (this._userManager.Options.SignIn.RequireConfirmedEmail)
                     {
-                        return this.RedirectToPage("RegisterConfirmation", new { email = this.Input.Email });
+                        return this.LocalRedirect("~/Emails/Confirm");
                     }
                     else
                     {

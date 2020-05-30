@@ -11,6 +11,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200419153304_Initial.cs" />
+    <Compile Remove="Migrations\20200419153304_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20200530051947_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530051947_ModelsUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200530054409_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530054409_ModelsUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200530062906_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530062906_ModelsUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200530064334_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530064334_ModelsUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200530065130_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530065130_ModelsUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200530082811_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530082811_ModelsUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200530083112_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530083112_ModelsUpdate.Designer.cs" />
+    <Compile Remove="Migrations\20200530083708_ModelsUpdate.cs" />
+    <Compile Remove="Migrations\20200530083708_ModelsUpdate.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>
 
@@ -23,6 +44,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.2" />
+    <PackageReference Include="Microsoft.DotNet.Cli.Utils" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

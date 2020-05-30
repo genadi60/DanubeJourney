@@ -7,104 +7,135 @@
 }
 
 
+    <div class="container" id="ship">
+        <div id="av-sidebar" style="margin-top: 0px;">
+            <div id="av-sidebar-top">
+                <div class="sidebar-a">
+                    <a class="scrollToTop">
+                        <img src="~/css/images/favicon-32x32.png" alt="">
+                        <p>Back to Top</p>
+                    </a>
+                </div>
+            </div>
+            <div id="shipname">
+                <p>
+                    <i>DanubeJourney Impression<sup>SM</sup></i>
+                </p>
+            </div>
+            <div id="av-sidebar-nav">
+                <ul id="sidebar-list">
+                    <li id="n-amenities" class=""><a href="#amenities">Amenities</a></li>
+                    <li id="n-staterooms" class=""><a href="#staterooms">Staterooms</a></li>
+                    <li id="n-deck"><a href="#deck-plans">Deck Plans</a></li>
+                    <li id="n-ship-dining"><a href="#dining">Dining</a></li>
+                    <li id="n-photos"><a href="#photo-gallery">Photo Gallery</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-misc" style="border-bottom: 0;">
+                <a id="ucShipDisplay_linkDepartures" href="#">Departures</a>
+            </div>
+        </div>
+        <div class="ship-details-container">
+            <header class="details-header">
+                <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <section class="image">
+                <img src="@Model.ImageUrl" alt="@Model.Name" />
+            </section>
+            <section class="ship-title">
+                <hr />
+                <h1 style="text-align: center">@Model.Name</h1>
+                <hr />
+            </section>
 
-    <div class="ship-details-container">
-        <header class="details-header">
-            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Settings" asp-action="Index">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="data-container">
+                <section class="main-data">
+                    <dl>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Launched)
+                        </dt>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.Launched)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Passengers)
+                        </dt>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.Passengers)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Crew)
+                        </dt>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.Crew)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Length)
+                        </dt>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.Length)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Staterooms)
+                        </dt>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.Staterooms)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Suites)
+                        </dt>
+                        <dd class="col-sm-5">
+                            @Html.DisplayFor(model => model.Suites)
+                        </dd>
+                    </dl>
+                </section>
+                <aside class="append-data">
+                    <ul class="testimonials">
+                        <li>
+                            <a href="#">
+                                <span class="avatar">
+                                    <img src="@Model.Captain.Avatar" alt="avatar">
+                                </span>
+                                <span class="name">@Model.Captain.FirstName @Model.Captain.LastName</span>
+                                <span class="jobtitle">Captain</span>
+                                <span class="message">
+                                    This is only demo!
+                                </span>
+                            </a>
                         </li>
                     </ul>
-                </div>
-            </nav>
-        </header>
-        <section class="image">
-            <img src="@Model.ImageUrl" alt="@Model.Name" />
-        </section>
-        <section class="ship-title">
-            <hr />
-            <h1 style="text-align: center">@Model.Name</h1>
-            <hr />
-        </section>
+                </aside>
+            </div>
 
-        <div class="data-container">
-            <section class="main-data">
-                <dl>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Launched)
-                    </dt>
-                    <dd class="col-sm-5">
-                        @Html.DisplayFor(model => model.Launched)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Passengers)
-                    </dt>
-                    <dd class="col-sm-5">
-                        @Html.DisplayFor(model => model.Passengers)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Crew)
-                    </dt>
-                    <dd class="col-sm-5">
-                        @Html.DisplayFor(model => model.Crew)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Length)
-                    </dt>
-                    <dd class="col-sm-5">
-                        @Html.DisplayFor(model => model.Length)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Staterooms)
-                    </dt>
-                    <dd class="col-sm-5">
-                        @Html.DisplayFor(model => model.Staterooms)
-                    </dd>
-                    <dt class="col-sm-2">
-                        @Html.DisplayNameFor(model => model.Suites)
-                    </dt>
-                    <dd class="col-sm-5">
-                        @Html.DisplayFor(model => model.Suites)
-                    </dd>
-                </dl>
-            </section>
-            <aside class="append-data">
-                <ul class="testimonials">
-                    <li>
-                        <a href="#">
-                            <span class="avatar">
-                                <img src="@Model.Captain.Avatar" alt="avatar">
-                            </span>
-                            <span class="name">@Model.Captain.FirstName @Model.Captain.LastName</span>
-                            <span class="jobtitle">Captain</span>
-                            <span class="message">
-                                This is only demo!
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </aside>
         </div>
+        <section id="amenities"><img src="@Model.Captain.Avatar" alt="avatar"></section>
+        <section id="staterooms"><img src="@Model.Captain.Avatar" alt="avatar"></section>
+        <section id="deck-plans"><img src="@Model.Captain.Avatar" alt="avatar"></section>
+        <section id="dining"><img src="@Model.Captain.Avatar" alt="avatar"></section>
+        <section id="photo-gallery"><img src="@Model.Captain.Avatar" alt="avatar"></section>
+
+        @if (this.Manager.Context.User.IsInRole("Administrator"))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id });
+            <span>|</span>
+        }
+        <a asp-action="Index">Back to List</a>
     </div>
-<div>
-    @if (this.Manager.Context.User.IsInRole("Administrator"))
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.Id });
-        <span>|</span>
-    }
-
-
-    <a asp-action="Index">Back to List</a>
-</div>

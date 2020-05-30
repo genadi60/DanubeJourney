@@ -26,40 +26,6 @@ namespace DanubeJourney.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Galleries",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Galleries", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RoomPlans",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    RoomPlanUrl = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoomPlans", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Settings",
                 columns: table => new
                 {
@@ -75,6 +41,36 @@ namespace DanubeJourney.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Settings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ShipGalleries",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShipGalleries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TripGalleries",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TripGalleries", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -121,7 +117,7 @@ namespace DanubeJourney.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    RoleId = table.Column<string>(nullable: true),
+                    RoleId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -135,7 +131,7 @@ namespace DanubeJourney.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ImageCategories",
+                name: "ShipImages",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -144,16 +140,44 @@ namespace DanubeJourney.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    GalleryId = table.Column<string>(nullable: true),
+                    Category = table.Column<int>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    GalleryId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ImageCategories", x => x.Id);
+                    table.PrimaryKey("PK_ShipImages", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ImageCategories_Galleries_GalleryId",
+                        name: "FK_ShipImages_ShipGalleries_GalleryId",
                         column: x => x.GalleryId,
-                        principalTable: "Galleries",
+                        principalTable: "ShipGalleries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TripImages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    ModifiedOn = table.Column<DateTime>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    DeletedOn = table.Column<DateTime>(nullable: true),
+                    Category = table.Column<int>(nullable: false),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    GalleryId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TripImages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TripImages_TripGalleries_GalleryId",
+                        column: x => x.GalleryId,
+                        principalTable: "TripGalleries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -244,31 +268,6 @@ namespace DanubeJourney.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    CategoryId = table.Column<int>(nullable: false),
-                    ImageUrl = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Images_ImageCategories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "ImageCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "BookingCards",
                 columns: table => new
                 {
@@ -339,40 +338,18 @@ namespace DanubeJourney.Data.Migrations
                     Suites = table.Column<int>(nullable: false),
                     CaptainId = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
+                    DeckPlansUrl = table.Column<string>(nullable: true),
+                    Amenities = table.Column<string>(nullable: true),
+                    Dining = table.Column<string>(nullable: true),
                     GalleryId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ships", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ships_Galleries_GalleryId",
+                        name: "FK_Ships_ShipGalleries_GalleryId",
                         column: x => x.GalleryId,
-                        principalTable: "Galleries",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Decks",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    DeckPlan = table.Column<string>(nullable: true),
-                    ShipId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Decks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Decks_Ships_ShipId",
-                        column: x => x.ShipId,
-                        principalTable: "Ships",
+                        principalTable: "ShipGalleries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -407,7 +384,7 @@ namespace DanubeJourney.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Facilities",
+                name: "Rooms",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -416,38 +393,20 @@ namespace DanubeJourney.Data.Migrations
                     ModifiedOn = table.Column<DateTime>(nullable: true),
                     IsDeleted = table.Column<bool>(nullable: false),
                     DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    ShipId = table.Column<string>(nullable: true)
+                    Type = table.Column<int>(nullable: false),
+                    Category = table.Column<int>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    Area = table.Column<int>(nullable: false),
+                    PlanUrl = table.Column<string>(nullable: true),
+                    ImageUrl = table.Column<string>(nullable: true),
+                    ShipId = table.Column<string>(nullable: true),
+                    Features = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Facilities", x => x.Id);
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Facilities_Ships_ShipId",
-                        column: x => x.ShipId,
-                        principalTable: "Ships",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RoomCategories",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    ShipId = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RoomCategories", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RoomCategories_Ships_ShipId",
+                        name: "FK_Rooms_Ships_ShipId",
                         column: x => x.ShipId,
                         principalTable: "Ships",
                         principalColumn: "Id",
@@ -474,77 +433,15 @@ namespace DanubeJourney.Data.Migrations
                 {
                     table.PrimaryKey("PK_Trips", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Trips_Galleries_GalleryId",
+                        name: "FK_Trips_TripGalleries_GalleryId",
                         column: x => x.GalleryId,
-                        principalTable: "Galleries",
+                        principalTable: "TripGalleries",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Trips_Ships_ShipId",
                         column: x => x.ShipId,
                         principalTable: "Ships",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Rooms",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    CategoryId = table.Column<int>(nullable: false),
-                    Price = table.Column<decimal>(nullable: false),
-                    PlanId = table.Column<int>(nullable: false),
-                    ImageId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rooms", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Rooms_RoomCategories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "RoomCategories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Rooms_Images_ImageId",
-                        column: x => x.ImageId,
-                        principalTable: "Images",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Rooms_RoomPlans_PlanId",
-                        column: x => x.PlanId,
-                        principalTable: "RoomPlans",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Features",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedOn = table.Column<DateTime>(nullable: false),
-                    ModifiedOn = table.Column<DateTime>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    RoomId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Features", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Features_Rooms_RoomId",
-                        column: x => x.RoomId,
-                        principalTable: "Rooms",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -644,16 +541,6 @@ namespace DanubeJourney.Data.Migrations
                 column: "TripId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Decks_IsDeleted",
-                table: "Decks",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Decks_ShipId",
-                table: "Decks",
-                column: "ShipId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Employees_IsDeleted",
                 table: "Employees",
                 column: "IsDeleted");
@@ -664,88 +551,33 @@ namespace DanubeJourney.Data.Migrations
                 column: "ShipId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Facilities_IsDeleted",
-                table: "Facilities",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Facilities_ShipId",
-                table: "Facilities",
-                column: "ShipId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Features_IsDeleted",
-                table: "Features",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Features_RoomId",
-                table: "Features",
-                column: "RoomId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Galleries_IsDeleted",
-                table: "Galleries",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ImageCategories_GalleryId",
-                table: "ImageCategories",
-                column: "GalleryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ImageCategories_IsDeleted",
-                table: "ImageCategories",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_CategoryId",
-                table: "Images",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Images_IsDeleted",
-                table: "Images",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RoomCategories_IsDeleted",
-                table: "RoomCategories",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RoomCategories_ShipId",
-                table: "RoomCategories",
-                column: "ShipId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_RoomPlans_IsDeleted",
-                table: "RoomPlans",
-                column: "IsDeleted");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Rooms_CategoryId",
-                table: "Rooms",
-                column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Rooms_ImageId",
-                table: "Rooms",
-                column: "ImageId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Rooms_IsDeleted",
                 table: "Rooms",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rooms_PlanId",
+                name: "IX_Rooms_ShipId",
                 table: "Rooms",
-                column: "PlanId");
+                column: "ShipId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
                 table: "Settings",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShipGalleries_IsDeleted",
+                table: "ShipGalleries",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShipImages_GalleryId",
+                table: "ShipImages",
+                column: "GalleryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShipImages_IsDeleted",
+                table: "ShipImages",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
@@ -761,6 +593,21 @@ namespace DanubeJourney.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Ships_IsDeleted",
                 table: "Ships",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TripGalleries_IsDeleted",
+                table: "TripGalleries",
+                column: "IsDeleted");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TripImages_GalleryId",
+                table: "TripImages",
+                column: "GalleryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TripImages_IsDeleted",
+                table: "TripImages",
                 column: "IsDeleted");
 
             migrationBuilder.CreateIndex(
@@ -847,16 +694,16 @@ namespace DanubeJourney.Data.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Decks");
-
-            migrationBuilder.DropTable(
-                name: "Facilities");
-
-            migrationBuilder.DropTable(
-                name: "Features");
-
-            migrationBuilder.DropTable(
                 name: "Settings");
+
+            migrationBuilder.DropTable(
+                name: "ShipImages");
+
+            migrationBuilder.DropTable(
+                name: "TripImages");
+
+            migrationBuilder.DropTable(
+                name: "Rooms");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
@@ -865,22 +712,10 @@ namespace DanubeJourney.Data.Migrations
                 name: "Trips");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
-
-            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "RoomCategories");
-
-            migrationBuilder.DropTable(
-                name: "Images");
-
-            migrationBuilder.DropTable(
-                name: "RoomPlans");
-
-            migrationBuilder.DropTable(
-                name: "ImageCategories");
+                name: "TripGalleries");
 
             migrationBuilder.DropTable(
                 name: "Ships");
@@ -889,7 +724,7 @@ namespace DanubeJourney.Data.Migrations
                 name: "Employees");
 
             migrationBuilder.DropTable(
-                name: "Galleries");
+                name: "ShipGalleries");
         }
     }
 }

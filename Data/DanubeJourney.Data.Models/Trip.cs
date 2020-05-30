@@ -21,13 +21,13 @@
 
         public string ShipId { get; set; }
 
-        public Ship Ship { get; set; }
+        public virtual Ship Ship { get; set; }
 
         public string MapUrl { get; set; }
 
         public string GalleryId { get; set; }
 
-        public Gallery Gallery { get; set; }
+        public virtual TripGallery Gallery { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
     }

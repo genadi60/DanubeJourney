@@ -31,27 +31,19 @@
 
         public DbSet<Room> Rooms { get; set; }
 
-        public DbSet<Image> Images { get; set; }
+        public DbSet<ShipImage> ShipImages { get; set; }
 
-        public DbSet<Deck> Decks { get; set; }
+        public DbSet<TripImage> TripImages { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
-
-        public DbSet<RoomPlan> RoomPlans { get; set; }
-
-        //public DbSet<RoomCategory> RoomCategories { get; set; }
-
-        public DbSet<ImageCategory> ImageCategories { get; set; }
-
-        public DbSet<Facility> Facilities { get; set; }
-
-        public DbSet<Feature> Features { get; set; }
 
         public DbSet<BookingCard> BookingCards { get; set; }
 
         public DbSet<Employee> Employees { get; set; }
 
-        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<ShipGallery> ShipGalleries { get; set; }
+
+        public DbSet<TripGallery> TripGalleries { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

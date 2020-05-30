@@ -2,8 +2,10 @@
 {
     public enum RoomCategory
     {
-        Stateroom = 1,
-        RoyalSuite = 2,
-        PanoramaSuite = 3,
+        A = 1,
+        B = 2,
+        D = 3,
+        E = 4,
+        P = 5,
     }
 }

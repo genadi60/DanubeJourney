@@ -5,17 +5,23 @@
 @foreach (var ship in Model.Collection)
 {
     <div class="media">
-        <section class="media-image">
-            <a asp-area="" asp-controller="Images" asp-action="Upload"><img src="@ship.ImageUrl" class="mr-3" alt="@ship.Name"></a>
-        </section>
-        <section class="media-body">
+        <div class="media-header">
             <h3 class="mt-0">@ship.Name</h3>
             <form method="post" class="button-primary inline" asp-area="" asp-controller="Ships" asp-action="Details">
                 <button type="submit" class="link-button" name="id" value="@ship.Id">
                     Details
                 </button>
             </form>
-            <div>@Html.Raw(ship.ShortDescription.Replace("Avalon", "DanubeJourney"))</div>
-        </section>
+        </div>
+        <div class="media-body">
+            <section class="media-image">
+                <a asp-area="" asp-controller="Images" asp-action="Upload"><img src="@ship.ImageUrl" class="mr-3" alt="@ship.Name"></a>
+
+            </section>
+            <p>@ship.Description.Replace("Avalon", "DanubeJourney")</p>
+            @*<section class="media-content">
+
+        </section>*@
+        </div>
     </div>
 }

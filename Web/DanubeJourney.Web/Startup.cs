@@ -2,6 +2,8 @@
 
 namespace DanubeJourney.Web
 {
+    using System;
+    using System.Globalization;
     using System.Reflection;
 
     using CloudinaryDotNet;
@@ -17,13 +19,17 @@ namespace DanubeJourney.Web
     using DanubeJourney.Services.Messaging;
     using DanubeJourney.Web.ViewModels;
 
+    // using Microsoft.AspNetCore.Authentication.OAuth;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Localization;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using Microsoft.Extensions.Logging;
+    using Serilog;
 
     public class Startup
     {
@@ -42,6 +48,7 @@ namespace DanubeJourney.Web
 
             services.AddDefaultIdentity<DanubeJourneyUser>(options =>
             {
+                options.SignIn.RequireConfirmedEmail = true;
                 options.User.RequireUniqueEmail = true;
                 options.Password.RequireDigit = false;
                 options.Password.RequireLowercase = false;
@@ -49,6 +56,8 @@ namespace DanubeJourney.Web
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequiredLength = 3;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts = 5;
             })
                 .AddRoles<DanubeJourneyRole>().AddEntityFrameworkStores<DanubeJourneyDbContext>();
 
@@ -58,6 +67,30 @@ namespace DanubeJourney.Web
                         options.CheckConsentNeeded = context => true;
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.LoginPath = "/Account/Login";
+                options.LogoutPath = "/Account/Logout";
+                options.AccessDeniedPath = "/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+            services.Configure<RequestLocalizationOptions>(
+                options =>
+                {
+                    var supportedCultures = new[]
+                    {
+                        new CultureInfo("en-US"),
+                    };
+
+                    options.DefaultRequestCulture = new RequestCulture(supportedCultures[0]);
+
+                    // Formatting numbers, dates, etc.
+                    options.SupportedCultures = supportedCultures;
+
+                    // UI strings that we have localized.
+                    options.SupportedUICultures = supportedCultures;
+                });
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -72,9 +105,16 @@ namespace DanubeJourney.Web
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender(GlobalConstants.EmailSenderKey));
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddScoped<ILogger<DanubeJourneyUser>, Logger<DanubeJourneyUser>>();
             services.AddTransient<ITripsService, TripsService>();
             services.AddTransient<IShipsService, ShipsService>();
             services.AddTransient<IEmployeesService, EmployeesService>();
+
+            // Logging
+            services.AddLogging(lb =>
+            {
+                lb.AddConfiguration(this.configuration.GetSection("Logging"));
+            });
 
             // Cloudinary Setup
             var cloudinaryAccount = new Account(
@@ -86,8 +126,9 @@ namespace DanubeJourney.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddFile(AppContext.BaseDirectory + "/Logs/danubeJourney.txt", LogLevel.Information);
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
             // Seed data on application startup
