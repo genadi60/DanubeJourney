@@ -47,9 +47,26 @@
             return this._repository.All().To<ShipViewModel>().FirstOrDefault(vm => vm.Id.Equals(id));
         }
 
-        public Task<int> Edit(ShipViewModel model)
+        public async Task<string> Edit(ShipViewModel model)
         {
-            throw new NotImplementedException();
+            var ship = this._repository.All().FirstOrDefault(sh => sh.Id == model.Id);
+            ship.Name = model.Name;
+            ship.Launched = model.Launched;
+            ship.Passengers = model.Passengers;
+            ship.Crew = model.Crew;
+            ship.Length = model.Length;
+            ship.Staterooms = model.Staterooms;
+            ship.Suites = model.Suites;
+            ship.CaptainId = model.CaptainId;
+            ship.ImageUrl = model.ImageUrl;
+            ship.Description = model.Description;
+            ship.Amenities = model.Amenities;
+            ship.Dining = model.Dining;
+            ship.DeckPlansUrl = model.DeckPlansUrl;
+
+            this._repository.Update(ship);
+            await this._repository.SaveChangesAsync();
+            return ship.Id;
         }
 
         public Task<int> Delete(string id)
@@ -57,9 +74,14 @@
             throw new NotImplementedException();
         }
 
-        public ICollection<T> GetModel<T>()
+        public ICollection<T> GetModels<T>()
         {
             return this._repository.All().To<T>().ToList();
+        }
+
+        public T GetModel<T>(string id)
+        {
+            return this._repository.All().Where(sh => sh.Id == id).To<T>().FirstOrDefault();
         }
     }
 }

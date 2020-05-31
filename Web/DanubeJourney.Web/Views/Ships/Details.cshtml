@@ -124,13 +124,18 @@
                     </ul>
                 </aside>
             </div>
-
+            <hr />
+            <section id="amenities">@Html.Raw(Model.SanitaisedAmenities.Replace("Avalon", "DanubeJourney"))</section>
+            <hr />
+            <section id="staterooms"><p>@Model.Staterooms</p></section>
+            <hr />
+            <section id="deck-plans" class="image"><img src="@Model.DeckPlansUrl" alt="deck-plans"></section>
+            <hr />
+            <section id="dining">@Html.Raw(Model.SanitaisedDining.Replace("Avalon", "DanubeJourney"))</section>
+            <hr />
+            <section id="photo-gallery"><img src="@Model.Captain.Avatar" alt="avatar"></section>
+            <hr />
         </div>
-        <section id="amenities"><img src="@Model.Captain.Avatar" alt="avatar"></section>
-        <section id="staterooms"><img src="@Model.Captain.Avatar" alt="avatar"></section>
-        <section id="deck-plans"><img src="@Model.Captain.Avatar" alt="avatar"></section>
-        <section id="dining"><img src="@Model.Captain.Avatar" alt="avatar"></section>
-        <section id="photo-gallery"><img src="@Model.Captain.Avatar" alt="avatar"></section>
 
         @if (this.Manager.Context.User.IsInRole("Administrator"))
         {

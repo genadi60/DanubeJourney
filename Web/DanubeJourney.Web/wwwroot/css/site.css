@@ -582,6 +582,13 @@ div.media {
     background-color: rgba(255, 255, 255, 0);
 }
 
+.ship-details-container section#deck-plans.image:before {
+    display: block;
+    content: '';
+    padding-top: 98%;
+    background-color: rgba(255, 255, 255, 0);
+}
+
 .ship-details-container section.image,
 .media section.media-image {
     display: block;
@@ -613,6 +620,15 @@ div.media {
     display: block;
     height: 100%;
     width: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ship-details-container section#deck-plans.image img {
+    display: block;
+    height: auto;
+    width: 100%;
     position: absolute;
     top: 0;
     left: 0;

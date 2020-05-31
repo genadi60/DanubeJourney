@@ -12,9 +12,11 @@
 
         ShipViewModel Details(string id);
 
-        ICollection<T> GetModel<T>();
+        ICollection<T> GetModels<T>();
 
-        Task<int> Edit(ShipViewModel model);
+        T GetModel<T>(string id);
+
+        Task<string> Edit(ShipViewModel model);
 
         Task<int> Delete(string id);
     }

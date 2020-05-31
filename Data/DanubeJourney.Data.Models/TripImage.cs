@@ -12,6 +12,6 @@
 
         public string GalleryId { get; set; }
 
-        public TripGallery Gallery { get; set; }
+        public virtual TripGallery Gallery { get; set; }
     }
 }

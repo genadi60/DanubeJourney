@@ -26,5 +26,11 @@ namespace DanubeJourney.Web.InputModels.Ships
         public string ImageUrl { get; set; }
 
         public string Description { get; set; }
+
+        public string Amenities { get; set; }
+
+        public string Dining { get; set; }
+
+        public string DeckPlansUrl { get; set; }
     }
 }

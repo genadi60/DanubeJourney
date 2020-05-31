@@ -22,68 +22,83 @@
 <hr />
 
     
-        <form asp-controller="Ships" asp-action="Create" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Launched" class="control-label"></label>
-                <input asp-for="Launched" class="form-control" />
-                <span asp-validation-for="Launched" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Passengers" class="control-label"></label>
-                <input asp-for="Passengers" class="form-control" />
-                <span asp-validation-for="Passengers" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Crew" class="control-label"></label>
-                <input asp-for="Crew" class="form-control" />
-                <span asp-validation-for="Crew" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Length" class="control-label"></label>
-                <input asp-for="Length" class="form-control" />
-                <span asp-validation-for="Length" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Staterooms" class="control-label"></label>
-                <input asp-for="Staterooms" class="form-control" />
-                <span asp-validation-for="Staterooms" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Suites" class="control-label"></label>
-                <input asp-for="Suites" class="form-control" />
-                <span asp-validation-for="Suites" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Captain" class="control-label"></label>
-                <select asp-for="CaptainId" class="form-control">
-                    <option selected>Choose...</option>
-                    @foreach (var captain in captains)
-                    {
-                        <option value="@captain.Id">@captain.FirstName @captain.LastName</option>
-                    }
-                </select>
-                <span asp-validation-for="CaptainId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label"></label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <textarea asp-for="Description" class="form-control"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <hr />
-            <input type="submit" value="Create" class="btn btn-primary" />
-            
-        </form>
+<form asp-controller="Ships" asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Launched" class="control-label"></label>
+        <input asp-for="Launched" class="form-control" />
+        <span asp-validation-for="Launched" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Passengers" class="control-label"></label>
+        <input asp-for="Passengers" class="form-control" />
+        <span asp-validation-for="Passengers" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Crew" class="control-label"></label>
+        <input asp-for="Crew" class="form-control" />
+        <span asp-validation-for="Crew" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Length" class="control-label"></label>
+        <input asp-for="Length" class="form-control" />
+        <span asp-validation-for="Length" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Staterooms" class="control-label"></label>
+        <input asp-for="Staterooms" class="form-control" />
+        <span asp-validation-for="Staterooms" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Suites" class="control-label"></label>
+        <input asp-for="Suites" class="form-control" />
+        <span asp-validation-for="Suites" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Captain" class="control-label"></label>
+        <select asp-for="CaptainId" class="form-control">
+            <option selected>Choose...</option>
+            @foreach (var captain in captains)
+            {
+                <option value="@captain.Id">@captain.FirstName @captain.LastName</option>
+            }
+        </select>
+        <span asp-validation-for="CaptainId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ImageUrl" class="control-label"></label>
+        <input asp-for="ImageUrl" class="form-control" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amenities" class="control-label"></label>
+        <textarea asp-for="Amenities" class="form-control"></textarea>
+        <span asp-validation-for="Amenities" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Dining" class="control-label"></label>
+        <textarea asp-for="Dining" class="form-control"></textarea>
+        <span asp-validation-for="Dining" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="DeckPlansUrl" class="control-label"></label>
+        <input asp-for="DeckPlansUrl" class="form-control" />
+        <span asp-validation-for="DeckPlansUrl" class="text-danger"></span>
+    </div>
+    <hr />
+    <input type="submit" value="Create" class="btn btn-primary" />
+
+</form>
     
 
 

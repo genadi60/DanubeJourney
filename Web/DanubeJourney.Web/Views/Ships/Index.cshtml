@@ -7,8 +7,8 @@
     <div class="media">
         <div class="media-header">
             <h3 class="mt-0">@ship.Name</h3>
-            <form method="post" class="button-primary inline" asp-area="" asp-controller="Ships" asp-action="Details">
-                <button type="submit" class="link-button" name="id" value="@ship.Id">
+            <form method="get" class="button-primary inline" asp-area="" asp-controller="Ships" asp-action="Details" asp-route-id="@ship.Id">
+                <button type="submit" class="link-button">
                     Details
                 </button>
             </form>

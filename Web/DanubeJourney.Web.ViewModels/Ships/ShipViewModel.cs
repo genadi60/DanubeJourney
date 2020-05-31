@@ -1,7 +1,5 @@
 ﻿namespace DanubeJourney.Web.ViewModels.Ships
 {
-    using System.Net;
-    using System.Text.RegularExpressions;
 
     using DanubeJourney.Data.Models;
     using DanubeJourney.Services.Mapping;
@@ -14,6 +12,14 @@
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public string Amenities { get; set; }
+
+        public string SanitaisedAmenities => new HtmlSanitizer().Sanitize(this.Amenities);
+
+        public string Dining { get; set; }
+
+        public string SanitaisedDining => new HtmlSanitizer().Sanitize(this.Dining);
 
         //public string ShortDescription => WebUtility.HtmlDecode(Regex.Replace(this.Description.Substring(0, 300), @"<[^>]+>", string.Empty) + "...");
 
@@ -36,5 +42,7 @@
         public virtual Employee Captain { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public string DeckPlansUrl { get; set; }
     }
 }

@@ -12,6 +12,6 @@
 
         public string GalleryId { get; set; }
 
-        public ShipGallery Gallery { get; set; }
+        public virtual ShipGallery Gallery { get; set; }
     }
 }

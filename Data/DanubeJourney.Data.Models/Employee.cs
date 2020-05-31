@@ -1,6 +1,8 @@
 ﻿namespace DanubeJourney.Data.Models
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
+
     using DanubeJourney.Data.Common.Models;
 
     public class Employee : BaseDeletableModel<string>
@@ -15,6 +17,9 @@
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        [NotMapped]
+        public string FullName => this.FirstName + " " + this.LastName;
 
         public DateTime? DateOfBird { get; set; }
 
